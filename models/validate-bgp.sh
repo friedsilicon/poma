@@ -5,6 +5,18 @@ set -e
 echo "🔍 Validating BGP YANG models..."
 echo ""
 
+# Check if pyang is available, if not try to activate venv
+if ! command -v pyang &> /dev/null; then
+    if [ -f "../venv/bin/activate" ]; then
+        echo "🔌 Activating virtual environment for pyang..."
+        source ../venv/bin/activate
+    else
+        echo "❌ pyang not found and no virtual environment available"
+        echo "   Run: source ../venv/bin/activate"
+        exit 1
+    fi
+fi
+
 # Test Nokia BGP models
 echo "📋 Nokia SROS BGP models:"
 echo "  Testing nokia-state-router-bgp.yang..."
