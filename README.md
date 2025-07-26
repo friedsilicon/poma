@@ -218,28 +218,7 @@ cd models && ./validate-bgp.sh
 yanggui openconfig/bgp/openconfig-bgp.yang
 ```
 
-### Adding More Models
-To add symlinks for other protocols:
-
-1. Edit `setup-bgp-models.sh` to include your new models
-2. Run the script: `./setup-bgp-models.sh`
-3. Commit the new symlinks to git
-
-**Note**: The `setup-bgp-models.sh` script is now mainly for:
-- Adding new model symlinks
-- Recreating symlinks if they get broken
-- Setting up models on systems where git doesn't preserve symlinks
-
-### When to Use setup-bgp-models.sh
-
-You typically only need to run this script if:
-
-- **Adding new models**: You want to symlink additional YANG files
-- **Broken symlinks**: Git operations somehow broke the symlinks (rare)
-- **Different OS**: Working on Windows where symlinks might not work the same way
-- **Fresh submodule update**: The submodules have new versions and you want to update symlink targets
-
-For day-to-day work, the symlinks in git are sufficient.
+All required models have already been symlinked. Raise an issue, or reach via slack if you need other models. 
 
 ## Contributing
 

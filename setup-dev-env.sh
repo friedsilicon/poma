@@ -14,29 +14,17 @@ if ! command -v python3 &> /dev/null; then
     exit 1
 fi
 
-# Create virtual environment
 echo "🏗️  Creating virtual environment..."
 python3 -m venv venv
 
-# Activate virtual environment
 echo "🔌 Activating virtual environment..."
 source venv/bin/activate
 
-# Upgrade pip
 echo "⬆️  Upgrading pip..."
 pip install --upgrade pip
 
-# Install development dependencies
 echo "📦 Installing YANG development tools..."
 pip install -r requirements-dev.txt
-
-# Check if models directory exists, if not create BGP models
-if [ ! -d "models" ]; then
-    echo "🔗 Setting up BGP model symlinks..."
-    ./setup-bgp-models.sh
-else
-    echo "📂 Models directory already exists - symlinks preserved"
-fi
 
 echo ""
 echo "✅ Development environment setup complete!"
@@ -54,4 +42,3 @@ echo ""
 echo "🧪 Next steps:"
 echo "   1. Test: cd models && ./validate-bgp.sh"
 echo "   2. Explore: yanggui models/openconfig/bgp/openconfig-bgp.yang"
-echo "   3. Add more models: edit setup-bgp-models.sh and re-run if needed"
