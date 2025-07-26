@@ -147,6 +147,50 @@ pyang --strict --path openconfig/types:openconfig/extensions:ietf openconfig/bgp
 - Symlinks are tracked in git for ease of use across different environments
 - Run setup scripts from parent directory to recreate symlinks if needed
 
+## Nokia Router State Model Assessment
+
+The Nokia `nokia-state-router.yang` model currently fails validation due to missing dependencies. Here's an analysis of what would be required to make it pass:
+
+### Issues Identified
+
+1. **Circular Dependencies**
+   - Router submodules (IGMP, LDP, MPLS, OSPF3, RSVP) create circular references to the main router module
+   - This is a fundamental architectural issue in how Nokia structured these modules
+
+2. **Missing Service Dependencies** 
+   - Need 23+ service state modules (`nokia-state-svc-*`)
+   - Service modules have their own dependency chains
+   - Missing: `nokia-state-svc-epipe`, `nokia-state-svc-sdp`, `nokia-state-svc-vpls`, `nokia-state-svc-vprn`, etc.
+
+3. **Missing Type Dependencies**
+   - Need 49+ type definition modules (`nokia-types-*`) 
+   - Missing: `nokia-types-filter`, `nokia-types-eth-cfm`, and many others
+
+### Effort Required
+
+**Minimal Approach (70+ files):**
+- Create symlinks for all 23 service state modules
+- Create symlinks for ~25 additional type modules  
+- Add service and additional type paths to validation scripts
+- **Estimated effort: 2-3 hours**
+
+**Complete Approach (100+ files):**
+- Create comprehensive Nokia module structure
+- Handle circular dependency issues (may require module modifications)
+- Create robust search path management
+- **Estimated effort: 4-6 hours**
+
+### Recommendation
+
+**Don't pursue full router state validation** for these reasons:
+
+1. **Scope Creep**: BGP focus would be diluted by adding 70+ non-BGP modules
+2. **Circular Dependencies**: Fundamental architectural issues that may require Nokia module modifications  
+3. **Maintenance Burden**: Much larger symlink structure to maintain
+4. **Current Success**: Nokia BGP submodule and BGP-only test model already work perfectly
+
+**Current BGP-focused approach is optimal** - we have fully functional Nokia BGP validation and tree generation, which meets the primary goal for BGP modeling work.
+
 ## Dependencies
 
 All validation requires:
