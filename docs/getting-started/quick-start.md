@@ -74,7 +74,7 @@ cd models
 ./validate-nokia-bgp.sh -t
 
 # OpenConfig BGP models only  
-./validate-openconfig-bgp.sh -e
+./validate-openconfig-bgp.sh -t
 
 # Help for any script
 ./validate-bgp.sh -h
