@@ -21,7 +21,7 @@ cd models && ./validate-bgp.sh -t
 
 ## 📚 Documentation
 
-**Full documentation is available at: [https://yourusername.github.io/yang-modelling](https://yourusername.github.io/yang-modelling)**
+**Full documentation is available [here](https://shiva.github.io/yang-modelling)**
 
 - **[Getting Started](docs/getting-started/quick-start.md)** - Setup and first steps
 - **[Validation Guide](docs/user-guide/validation.md)** - BGP model validation workflows  
