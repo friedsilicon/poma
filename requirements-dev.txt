@@ -5,6 +5,10 @@
 pyang>=2.5.3          # YANG validator, converter, and code generator
 # libyang>=2.0.0        # Python bindings for libyang library (requires system libyang)
 
+# Documentation generation (optional - for docs development)
+mkdocs-material>=9.0.0    # Material theme for MkDocs
+mkdocs-git-revision-date-localized-plugin>=1.2.0  # Git revision dates
+
 # IMPORTANT: libyang Python bindings require system-level installation first!
 # Install system libyang before running: pip install libyang
 # See YANG_TOOLS.md for system installation instructions

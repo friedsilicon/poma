@@ -1,0 +1,80 @@
+site_name: YANG Modelling Documentation
+site_description: Comprehensive YANG model validation and tooling
+site_author: YANG Modelling Team
+site_url: https://yourusername.github.io/yang-modelling
+
+# Repository
+repo_name: yourusername/yang-modelling
+repo_url: https://github.com/yourusername/yang-modelling
+
+# Configuration
+theme:
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+
+# Navigation
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Quick Start: getting-started/quick-start.md
+    - Installation: getting-started/installation.md
+    - Troubleshooting: getting-started/troubleshooting.md
+  - User Guide:
+    - Validation Workflows: user-guide/validation.md
+    - Models Overview: user-guide/models-overview.md
+    - Scripts Reference: user-guide/scripts-reference.md
+  - Models:
+    - Overview: models/index.md
+    - Nokia Models: models/nokia.md
+    - OpenConfig Models: models/openconfig.md
+    - Assessment: models/assessment.md
+  - Development:
+    - Contributing: development/contributing.md
+    - Project Structure: development/project-structure.md
+    - Adding Models: development/adding-models.md
+  - Reference:
+    - YANG Tools: reference/yang-tools.md
+    - Command Reference: reference/command-reference.md
+
+# Plugins
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
