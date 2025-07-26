@@ -1,80 +1,61 @@
 # BGP YANG Models
 
-This directory contains organized symlinks to BGP YANG models from Nokia and OpenConfig.
+This directory contains symlinks to BGP-related YANG models organized by vendor.
 
 ## Structure
 
 ```
 models/
-├── nokia/                          # Nokia models and dependencies
-│   ├── bgp/                        # Nokia BGP models
-│   │   ├── nokia-state-router-bgp.yang    # BGP state submodule
-│   │   └── nokia-state.yang               # Main state module
-│   └── types/                      # Nokia-specific types
-│       ├── nokia-sros-yang-extensions.yang
-│       ├── nokia-types-bgp.yang
-│       ├── nokia-types-router.yang
-│       ├── nokia-types-services.yang
-│       └── nokia-types-sros.yang
-├── openconfig/                     # OpenConfig models and dependencies
-│   ├── bgp/                        # OpenConfig BGP models
-│   │   └── openconfig-bgp.yang            # Main BGP module
-│   ├── types/                      # OpenConfig types
-│   │   ├── openconfig-extensions.yang
-│   │   ├── openconfig-rib-bgp.yang
-│   │   ├── openconfig-types.yang
-│   │   ├── openconfig-inet-types.yang
-│   │   ├── openconfig-yang-types.yang
-│   │   ├── openconfig-bgp-types.yang
-│   │   ├── openconfig-interfaces.yang
-│   │   └── openconfig-routing-policy.yang
-│   └── includes/                   # OpenConfig submodules
-│       └── bgp/                    # BGP-specific includes
-│           ├── openconfig-bgp-common.yang
-│           ├── openconfig-bgp-common-multiprotocol.yang
-│           ├── openconfig-bgp-common-structure.yang
-│           ├── openconfig-bgp-peer-group.yang
-│           ├── openconfig-bgp-neighbor.yang
-│           └── openconfig-bgp-global.yang
-└── ietf/                           # IETF standard types
-    ├── ietf-inet-types.yang
-    ├── ietf-yang-types.yang
-    └── ietf-interfaces.yang
+├── nokia/
+│   ├── bgp/              # Nokia BGP-specific models
+│   ├── types/            # Nokia type definitions
+│   └── common/           # Nokia common modules
+├── openconfig/
+│   ├── bgp/              # OpenConfig BGP models
+│   ├── types/            # OpenConfig type definitions
+│   ├── extensions/       # OpenConfig extensions
+│   ├── rib/              # RIB-related models
+│   └── common/           # Common OpenConfig modules
+└── ietf/                 # IETF standard types
 ```
 
-## Usage
+## Key Models
 
-### Validate Models
+### Nokia SROS 19.10
+- **`nokia/bgp/nokia-state-router-bgp.yang`** - Main Nokia BGP state model
+- `nokia/common/nokia-state.yang` - Main state file that includes BGP submodule
+- `nokia/types/` - Nokia-specific type definitions
+
+### OpenConfig
+- **`openconfig/bgp/openconfig-bgp.yang`** - Main OpenConfig BGP model
+- `openconfig/bgp/openconfig-bgp-policy.yang` - BGP policy model
+- `openconfig/bgp/openconfig-bgp-types.yang` - BGP type definitions
+- `openconfig/types/` - OpenConfig type definitions
+
+### IETF
+- Standard type definitions used by both vendors
+
+## Validation Examples
+
+### Nokia BGP Model
 ```bash
-cd models
-./validate-bgp.sh
+# Validate Nokia BGP submodule
+pyang --strict --path nokia/types:ietf nokia/bgp/nokia-state-router-bgp.yang
+
+# Validate main Nokia state (includes BGP)
+pyang --strict --path nokia/types:ietf nokia/common/nokia-state.yang
 ```
 
-### Using with pyang
+### OpenConfig BGP Model
 ```bash
-# Nokia BGP (submodule - validate main module)
-pyang --path nokia/types:ietf:nokia/bgp \
-  nokia/bgp/nokia-state.yang
-
-# OpenConfig BGP
-pyang --path openconfig/types:ietf:openconfig/includes/bgp \
-  openconfig/bgp/openconfig-bgp.yang
-```
-
-### Generate Documentation
-```bash
-# Nokia BGP tree
-pyang -f tree --path nokia/types:ietf:nokia/bgp \
-  nokia/bgp/nokia-state.yang
-
-# OpenConfig BGP tree
-pyang -f tree --path openconfig/types:ietf:openconfig/includes/bgp \
-  openconfig/bgp/openconfig-bgp.yang
+# Validate OpenConfig BGP
+pyang --strict --path openconfig/types:openconfig/extensions:openconfig/rib:ietf \
+    openconfig/bgp/openconfig-bgp.yang
 ```
 
 ## Notes
 
-- All files are symlinks to the original submodule files
-- Models stay automatically synchronized with submodule updates
-- Nokia BGP is a submodule, so validate the main `nokia-state.yang` file
-- OpenConfig BGP uses include statements for its submodules
+- These are symlinks to the actual files in the git submodules
+- Symlinks are tracked in git for reproducible setup
+- Run `../setup-bgp-models.sh` to recreate if needed
+- Use the validation script: `./validate-bgp.sh`

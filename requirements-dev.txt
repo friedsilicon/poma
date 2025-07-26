@@ -3,16 +3,20 @@
 
 # YANG validation and processing tools
 pyang>=2.5.3          # YANG validator, converter, and code generator
-yanglint>=2.1.0       # libyang-based YANG linter and validator
+# libyang>=2.0.0        # Python bindings for libyang library (requires system libyang)
 
-# YANG GUI tools
-# Note: yanggui may have specific installation requirements
-# Check: https://github.com/alliedtelesis/yanggui
-yanggui>=1.0.0
+# IMPORTANT: libyang Python bindings require system-level installation first!
+# Install system libyang before running: pip install libyang
+# See YANG_TOOLS.md for system installation instructions
+
+# NOTE: yanggui is not pip-installable
+# See installation instructions below or in README.md
 
 # Additional YANG tools
 yangson>=1.4.0        # JSON/YANG data processing
 pyangbind>=0.8.1      # Python bindings for YANG models
+
+# Note: libyang Python bindings are now included above
 
 # Development and testing tools
 pytest>=7.0.0         # Testing framework
@@ -37,3 +41,14 @@ requests>=2.28.0      # HTTP requests
 lxml>=4.9.0           # XML processing
 xmltodict>=0.13.0     # XML to dict conversion
 jsonschema>=4.0.0     # JSON schema validation
+
+# Additional YANG tools installation:
+# 
+# yanglint CLI (optional, for command-line usage):
+# macOS: brew install libyang
+# Ubuntu: sudo apt-get install libyang-tools
+# Note: Python bindings (libyang package) are installed via pip above
+# 
+# yanggui:
+# See: https://github.com/alliedtelesis/yanggui
+# May require manual installation

@@ -119,11 +119,17 @@ While we recommend `venv` for this project, here are other options:
 - Works well with CI/CD
 
 **Key Tools Included:**
-- `pyang` - YANG validator, converter, and code generator
-- `yanglint` - libyang-based YANG linter and validator  
-- `yanggui` - GUI tool for YANG model visualization
-- `yangson` - JSON/YANG data processing
-- `pyangbind` - Python bindings for YANG models
+- `pyang` - YANG validator, converter, and code generator (pip-installable)
+- `yanglint` - libyang-based YANG linter and validator (system installation required)
+- `yanggui` - GUI tool for YANG model visualization (optional)
+- `yangson` - JSON/YANG data processing (pip-installable)
+- `pyangbind` - Python bindings for YANG models (pip-installable)
+- `libyang` - Python bindings for libyang C library (requires system libyang)
+
+**Installation Notes:**
+- Most tools install via pip in the virtual environment
+- `yanglint` and `libyang` Python bindings require system-level libyang installation
+- See `YANG_TOOLS.md` for system dependency installation instructions
 
 ### Cloning the Repository
 

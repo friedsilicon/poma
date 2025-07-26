@@ -1,32 +1,43 @@
 #!/bin/bash
 
-echo "🔍 Validating Nokia SROS 19.10 BGP models..."
-echo "Main module: nokia-state.yang with submodule: nokia-state-router-bgp.yang"
+set -e
 
-pyang --strict \
-  --path nokia/types:ietf:nokia/bgp \
-  nokia/bgp/nokia-state.yang
+echo "🔍 Validating BGP YANG models..."
+echo ""
 
-if [ $? -eq 0 ]; then
-    echo "✅ Nokia BGP models validated successfully!"
+# Test Nokia BGP models
+echo "📋 Nokia SROS BGP models:"
+echo "  Testing nokia-state-router-bgp.yang..."
+if pyang --strict --path nokia/types:ietf nokia/bgp/nokia-state-router-bgp.yang > /dev/null 2>&1; then
+    echo "  ✅ Nokia BGP submodule: VALID"
 else
-    echo "❌ Nokia BGP models validation failed!"
-    exit 1
+    echo "  ❌ Nokia BGP submodule: FAILED"
+    echo "     Detailed error:"
+    pyang --strict --path nokia/types:ietf nokia/bgp/nokia-state-router-bgp.yang
 fi
 
 echo ""
-echo "🔍 Validating OpenConfig BGP models..."
-
-pyang --strict \
-  --path openconfig/types:ietf:openconfig/includes/bgp \
-  openconfig/bgp/openconfig-bgp.yang
-
-if [ $? -eq 0 ]; then
-    echo "✅ OpenConfig BGP models validated successfully!"
+echo "  Testing nokia-state.yang (includes BGP)..."
+if pyang --strict --path nokia/types:ietf nokia/common/nokia-state.yang > /dev/null 2>&1; then
+    echo "  ✅ Nokia main state (with BGP): VALID"
 else
-    echo "❌ OpenConfig BGP models validation failed!"
-    exit 1
+    echo "  ❌ Nokia main state (with BGP): FAILED"
+    echo "     Detailed error:"
+    pyang --strict --path nokia/types:ietf nokia/common/nokia-state.yang
 fi
 
 echo ""
-echo "🎉 All BGP models validated successfully!"
+echo "📋 OpenConfig BGP models:"
+echo "  Testing openconfig-bgp.yang..."
+if pyang --strict --path openconfig/types:openconfig/extensions:openconfig/rib:ietf \
+    openconfig/bgp/openconfig-bgp.yang > /dev/null 2>&1; then
+    echo "  ✅ OpenConfig BGP: VALID"
+else
+    echo "  ❌ OpenConfig BGP: FAILED"
+    echo "     Detailed error:"
+    pyang --strict --path openconfig/types:openconfig/extensions:openconfig/rib:ietf \
+        openconfig/bgp/openconfig-bgp.yang
+fi
+
+echo ""
+echo "🎉 BGP model validation complete!"
