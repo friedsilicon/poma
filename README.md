@@ -12,13 +12,13 @@ This workspace aggregates YANG models from multiple authoritative sources to pro
 
 ```
 ├── README.md                 # This file
-├── public/                   # OpenConfig YANG models (submodule)
-└── 7x50_YangModels/         # Nokia SR OS YANG models (submodule)
+├── open-config/              # OpenConfig YANG models (submodule)
+└── nokia/                    # Nokia SR OS YANG models (submodule)
 ```
 
 ## Submodules
 
-### OpenConfig Public Models (`public/`)
+### OpenConfig Public Models (`open-config/`)
 
 **Source:** [openconfig/public](https://github.com/openconfig/public.git)
 
@@ -35,7 +35,7 @@ The OpenConfig working group develops vendor-neutral, model-driven network manag
 - Comprehensive protocol and feature coverage
 - Active community development
 
-### Nokia 7x50 YANG Models (`7x50_YangModels/`)
+### Nokia 7x50 YANG Models (`nokia/`)
 
 **Source:** [nokia/7x50_YangModels](https://github.com/nokia/7x50_YangModels.git)
 
@@ -81,8 +81,8 @@ To get the latest updates from the upstream repositories:
 git submodule update --remote
 
 # Update specific submodule
-git submodule update --remote public
-git submodule update --remote 7x50_YangModels
+git submodule update --remote open-config
+git submodule update --remote nokia
 ```
 
 ## Working with YANG Models
@@ -91,20 +91,20 @@ git submodule update --remote 7x50_YangModels
 
 ```bash
 # Validate a YANG model using pyang
-pyang --strict public/release/models/interfaces/openconfig-interfaces.yang
+pyang --strict open-config/release/models/interfaces/openconfig-interfaces.yang
 
 # Validate with dependencies
-pyang --path public/release/models public/release/models/interfaces/openconfig-interfaces.yang
+pyang --path open-config/release/models open-config/release/models/interfaces/openconfig-interfaces.yang
 ```
 
 ### Generating Documentation
 
 ```bash
 # Generate HTML documentation
-pyang -f jstree public/release/models/interfaces/openconfig-interfaces.yang -o interfaces.html
+pyang -f jstree open-config/release/models/interfaces/openconfig-interfaces.yang -o interfaces.html
 
 # Generate tree view
-pyang -f tree public/release/models/interfaces/openconfig-interfaces.yang
+pyang -f tree open-config/release/models/interfaces/openconfig-interfaces.yang
 ```
 
 ## Tools and Scripts
