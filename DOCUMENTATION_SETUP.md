@@ -24,7 +24,12 @@ mkdocs build
 
 Documentation automatically deploys to GitHub Pages when changes are pushed to `main` branch via GitHub Actions.
 
-To enable:
+**The workflow will automatically:**
+- Enable GitHub Pages (if not already enabled)
+- Configure Pages to use GitHub Actions as the source
+- Build and deploy the documentation
+
+**Manual setup (if needed):**
 1. Repository Settings > Pages > Source: "GitHub Actions"
 2. Update repository URLs in `mkdocs.yml`
 3. Push changes to trigger deployment
