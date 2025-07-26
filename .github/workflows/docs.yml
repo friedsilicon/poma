@@ -24,7 +24,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          fetch-depth: 1
+
+      - name: Checkout submodules with shallow clone
+        run: |
+          git submodule update --init --recursive --depth 1
 
       - name: Setup Python
         uses: actions/setup-python@v5
