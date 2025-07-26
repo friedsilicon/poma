@@ -1,0 +1,47 @@
+module nokia-state {
+
+    yang-version "1.1";
+
+    namespace "urn:nokia.com:sros:ns:yang:sr:state";
+
+    prefix "state";
+
+    import nokia-sros-yang-extensions     { prefix "sros-ext"; }
+    import ietf-inet-types                { prefix "inet"; }
+    import ietf-yang-types                { prefix "yang"; }
+    import nokia-types-router             { prefix "types-router"; }
+    import nokia-types-sros               { prefix "types-sros"; }
+    import nokia-types-bgp                { prefix "types-bgp"; }
+    import nokia-types-services           { prefix "types-services"; }
+
+    include nokia-state-router-bgp;
+
+    organization "Nokia";
+
+    description "Nokia SROS BGP-only state model for testing";
+
+    revision "2024-01-01" {
+        description "BGP-focused state model for validation";
+    }
+
+    container state {
+        config false;
+        description "Operational state data";
+
+        container router {
+            description "Router instance operational state";
+            
+            list router-instance {
+                key "router-name";
+                description "Router instance";
+                
+                leaf router-name {
+                    type string;
+                    description "Router instance name";
+                }
+
+                uses state-router-bgp;
+            }
+        }
+    }
+}
