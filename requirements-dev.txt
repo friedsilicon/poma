@@ -1,0 +1,39 @@
+# Development dependencies for YANG modeling
+# Install with: pip install -r requirements-dev.txt
+
+# YANG validation and processing tools
+pyang>=2.5.3          # YANG validator, converter, and code generator
+yanglint>=2.1.0       # libyang-based YANG linter and validator
+
+# YANG GUI tools
+# Note: yanggui may have specific installation requirements
+# Check: https://github.com/alliedtelesis/yanggui
+yanggui>=1.0.0
+
+# Additional YANG tools
+yangson>=1.4.0        # JSON/YANG data processing
+pyangbind>=0.8.1      # Python bindings for YANG models
+
+# Development and testing tools
+pytest>=7.0.0         # Testing framework
+black>=22.0.0         # Code formatter
+flake8>=4.0.0         # Linting
+mypy>=0.991           # Type checking
+
+# Documentation tools
+sphinx>=4.0.0         # Documentation generator
+sphinx-rtd-theme>=1.0.0  # Read the Docs theme for Sphinx
+
+# Jupyter for interactive development
+jupyter>=1.0.0        # Jupyter notebooks
+ipykernel>=6.0.0      # Jupyter kernel
+
+# Network automation libraries (useful for YANG work)
+ncclient>=0.6.13      # NETCONF client
+netmiko>=4.0.0        # Network device automation
+requests>=2.28.0      # HTTP requests
+
+# XML/JSON processing
+lxml>=4.9.0           # XML processing
+xmltodict>=0.13.0     # XML to dict conversion
+jsonschema>=4.0.0     # JSON schema validation
