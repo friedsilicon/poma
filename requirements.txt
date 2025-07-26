@@ -1,0 +1,41 @@
+# YANG Modeling Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core YANG validation and processing tools
+pyang>=2.5.3          # YANG validator, converter, and code generator
+yangson>=1.4.0        # JSON/YANG data processing
+pyangbind>=0.8.1      # Python bindings for YANG models
+
+# Documentation generation
+mkdocs-material>=9.0.0    # Material theme for MkDocs
+mkdocs-git-revision-date-localized-plugin>=1.2.0  # Git revision dates
+
+# Development and testing tools
+pytest>=7.0.0         # Testing framework
+black>=22.0.0         # Code formatter
+flake8>=4.0.0         # Linting
+mypy>=0.991           # Type checking
+
+# Network automation libraries (useful for YANG work)
+ncclient>=0.6.13      # NETCONF client
+netmiko>=4.0.0        # Network device automation
+requests>=2.28.0      # HTTP requests
+
+# XML/JSON processing
+lxml>=4.9.0           # XML processing
+xmltodict>=0.13.0     # XML to dict conversion
+jsonschema>=4.0.0     # JSON schema validation
+
+# Jupyter for interactive development
+jupyter>=1.0.0        # Jupyter notebooks
+ipykernel>=6.0.0      # Jupyter kernel
+
+# Optional: libyang Python bindings (requires system libyang)
+# libyang>=2.0.0        # Uncomment after installing system libyang
+#
+# System dependencies (install separately):
+# macOS: brew install libyang
+# Ubuntu: sudo apt-get install libyang-tools
+# Note: yanggui is not pip-installable
+#
+# See docs/reference/yang-tools.md for complete installation guide

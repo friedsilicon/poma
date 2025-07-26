@@ -43,6 +43,7 @@ cd models && ./validate-bgp.sh -t
 │   ├── openconfig/         # OpenConfig models
 │   └── ietf/               # IETF standard types
 ├── docs/                   # Documentation (MkDocs)
+├── requirements.txt        # All dependencies (YANG tools + docs)
 ├── open-config/            # OpenConfig submodule
 └── nokia/                  # Nokia submodule
 ```
@@ -66,8 +67,8 @@ cd models && ./validate-bgp.sh -t
 ## 📖 Local Documentation
 
 ```bash
-# Install docs dependencies
-pip install mkdocs-material mkdocs-git-revision-date-localized-plugin
+# Install all dependencies (includes docs tools)
+pip install -r requirements.txt
 
 # Serve docs locally
 mkdocs serve

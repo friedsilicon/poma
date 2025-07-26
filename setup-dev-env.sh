@@ -24,7 +24,7 @@ echo "⬆️  Upgrading pip..."
 pip install --upgrade pip
 
 echo "📦 Installing YANG development tools..."
-pip install -r requirements-dev.txt
+pip install -r requirements.txt
 
 # Attempt to install libyang Python bindings if system libyang is available
 echo ""

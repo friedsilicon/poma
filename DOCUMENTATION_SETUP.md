@@ -9,8 +9,8 @@ This project uses **MkDocs with Material theme** for documentation, auto-publish
 ## Local Development
 
 ```bash
-# Install dependencies
-pip install mkdocs-material mkdocs-git-revision-date-localized-plugin
+# Install all dependencies (includes MkDocs)
+pip install -r requirements.txt
 
 # Serve locally with live reload
 mkdocs serve
