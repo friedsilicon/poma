@@ -27,9 +27,44 @@ models/
 ### Main Validation
 - `validate-bgp.sh` - Validates both Nokia and OpenConfig BGP models
 
-### Vendor-Specific Validation
+### Vendor-Specific Validation  
 - `validate-nokia-bgp.sh` - Nokia BGP model validation only
 - `validate-openconfig-bgp.sh` - OpenConfig BGP model validation only
+
+### Script Options
+
+All validation scripts support the following command-line options:
+
+| Option | Description | Example |
+|--------|-------------|---------|
+| `-h, --help` | Show help message | `./validate-bgp.sh -h` |
+| `-t, --tree` | Show BGP tree structure | `./validate-bgp.sh -t` |
+| `-e, --errors` | Show detailed error messages | `./validate-bgp.sh -e` |
+| `-l, --lines NUM` | Number of tree lines to show (default: 20) | `./validate-bgp.sh -t -l 50` |
+| `-q, --quiet` | Quiet mode - minimal output | `./validate-bgp.sh -q` |
+| `-a, --all` | Run all validation checks (includes tree and errors) | `./validate-bgp.sh -a` |
+
+### Usage Examples
+
+```bash
+# Basic validation for all vendors
+./validate-bgp.sh
+
+# Quiet mode for CI/automation
+./validate-bgp.sh -q
+
+# Show tree structures with 30 lines
+./validate-bgp.sh -t -l 30
+
+# Show all details including errors
+./validate-bgp.sh -a
+
+# Nokia-specific validation with tree
+./validate-nokia-bgp.sh -t
+
+# OpenConfig-specific validation with errors
+./validate-openconfig-bgp.sh -e
+```
 
 ## Models Included
 
@@ -52,14 +87,35 @@ models/
 
 ### Quick Validation
 ```bash
-# Validate all BGP models
+# Validate all BGP models (basic)
 ./validate-bgp.sh
 
-# Validate only Nokia BGP models
-./validate-nokia-bgp.sh
+# Validate all with tree output
+./validate-bgp.sh -t
 
-# Validate only OpenConfig BGP models  
-./validate-openconfig-bgp.sh
+# Validate all with detailed errors
+./validate-bgp.sh -e
+
+# Validate all with comprehensive output
+./validate-bgp.sh -a
+
+# Quiet mode for automation
+./validate-bgp.sh -q
+```
+
+### Vendor-Specific Usage
+```bash
+# Nokia validation with tree (20 lines)
+./validate-nokia-bgp.sh -t
+
+# Nokia validation with extended tree (50 lines)
+./validate-nokia-bgp.sh -t -l 50
+
+# OpenConfig validation with error details
+./validate-openconfig-bgp.sh -e
+
+# Nokia quiet mode for CI
+./validate-nokia-bgp.sh -q
 ```
 
 ### Manual Validation Examples
