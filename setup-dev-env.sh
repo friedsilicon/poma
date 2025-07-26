@@ -36,12 +36,12 @@ if command -v yanglint &> /dev/null; then
     else
         echo "⚠️  Failed to install libyang Python bindings"
         echo "   This is optional - you can still use pyang for validation"
-        echo "   See YANG_TOOLS.md for troubleshooting system dependencies"
+        echo "   See docs/reference/yang-tools.md for troubleshooting"
     fi
 else
     echo "   System libyang not found - skipping Python bindings"
     echo "   Install system libyang first if you need the Python bindings"
-    echo "   See YANG_TOOLS.md for installation instructions"
+    echo "   See docs/reference/yang-tools.md for installation instructions"
 fi
 
 # Check for system-level YANG tools
@@ -54,6 +54,7 @@ else
     echo "⚠️  yanglint not found - install with:"
     echo "   macOS: brew install libyang"
     echo "   Ubuntu: sudo apt-get install libyang-tools"
+    echo "   See docs/reference/yang-tools.md for details"
 fi
 
 if command -v yanggui &> /dev/null; then
