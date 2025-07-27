@@ -15,7 +15,7 @@ Get up and running with YANG model validation in just a few steps.
 ```bash
 # Clone with submodules (important!)
 git clone --recursive <your-repo-url>
-cd yang-modelling
+cd poma
 ```
 
 !!! warning "Submodules Required"

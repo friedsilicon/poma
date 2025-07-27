@@ -1,6 +1,6 @@
 # Contributing
 
-Guidelines for contributing to the YANG Modelling workspace.
+Guidelines for contributing to the PoMa workspace.
 
 ## Overview
 
@@ -12,8 +12,8 @@ We welcome contributions to improve YANG model validation, add new vendor suppor
 
 1. **Fork and clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/yang-modelling.git
-   cd yang-modelling
+   git clone https://github.com/yourusername/poma.git
+   cd poma
    ```
 
 2. **Set up development environment:**
@@ -392,7 +392,7 @@ Contributors are recognized in:
 **Resources:**
 - [Troubleshooting Guide](../getting-started/troubleshooting.md)
 - [Project Structure](project-structure.md)
-- [GitHub Issues](https://github.com/yourusername/yang-modelling/issues)
+- [GitHub Issues](https://github.com/yourusername/poma/issues)
 
 ### For Maintainers
 
@@ -405,7 +405,7 @@ Contributors are recognized in:
 
 ## Thank You
 
-Thank you for contributing to the YANG Modelling workspace! Your contributions help make network automation more accessible and reliable for everyone.
+Thank you for contributing to the PoMa workspace! Your contributions help make network automation more accessible and reliable for everyone.
 
 ## Related Documentation
 

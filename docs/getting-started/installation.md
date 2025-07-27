@@ -1,6 +1,6 @@
 # Installation
 
-This guide covers the complete installation process for the YANG Modelling workspace.
+This guide covers the complete installation process for the PoMa workspace.
 
 ## Prerequisites
 
@@ -37,8 +37,8 @@ This guide covers the complete installation process for the YANG Modelling works
 
 ### 1. Clone Repository
 ```bash
-git clone --recursive https://github.com/yourusername/yang-modelling.git
-cd yang-modelling
+git clone --recursive https://github.com/yourusername/poma.git
+cd poma
 ```
 
 ### 2. Setup Development Environment
@@ -130,7 +130,7 @@ pyang --tree-type=usage nokia/nokia-sr-bgp.yang
 **Virtual environment not activating:**
 ```bash
 # Ensure you're in the project directory
-cd yang-modelling
+cd poma
 source venv/bin/activate
 ```
 

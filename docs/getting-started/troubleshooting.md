@@ -1,6 +1,6 @@
 # Troubleshooting
 
-Common issues and solutions for the YANG Modelling workspace.
+Common issues and solutions for the PoMa workspace.
 
 ## Installation Issues
 
@@ -187,10 +187,10 @@ mkdocs build --strict
 **Solutions:**
 ```bash
 # Check site_url in mkdocs.yml
-site_url: https://yourusername.github.io/yang-modelling
+site_url: https://yourusername.github.io/poma
 
 # Verify repository name matches
-repo_url: https://github.com/yourusername/yang-modelling
+repo_url: https://github.com/yourusername/poma
 ```
 
 ## Performance Issues
@@ -297,7 +297,7 @@ mkdocs build
 
 ### Still Need Help?
 
-- Check [GitHub Issues](https://github.com/yourusername/yang-modelling/issues)
+- Check [GitHub Issues](https://github.com/yourusername/poma/issues)
 - Review [Installation Guide](installation.md)
 - Contact the maintainers
 

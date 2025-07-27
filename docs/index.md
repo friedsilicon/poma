@@ -1,8 +1,11 @@
-# YANG Modelling
+# PoMa
 
 For the cursed, and the fallen. We are forced to live with YANG, so let's make it tolerable.
 
 This repository contains a comprehensive collection of YANG models from various sources, along with tools and scripts to work with them. Use at your own peril, but hopefully with less suffering.
+
+!!! info "About the Name"
+    **PoMa** is derived from "Porul Matraam" (பொருள் மாற்றம்), which means "Semantic Transformation" in Tamil. The name reflects the project's goal of transforming complex YANG models into more manageable and understandable formats.
 
 ## Features
 
@@ -17,7 +20,7 @@ This repository contains a comprehensive collection of YANG models from various 
 ```bash
 # Clone with submodules
 git clone --recursive <your-repo-url>
-cd yang-modelling
+cd poma
 
 # Setup environment
 ./setup-dev-env.sh

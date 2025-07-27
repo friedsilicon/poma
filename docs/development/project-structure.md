@@ -1,13 +1,13 @@
 # Project Structure
 
-Detailed overview of the YANG Modelling workspace organization and architecture.
+Detailed overview of the PoMa workspace organization and architecture.
 
 ## Repository Structure
 
 ### Top-Level Organization
 
 ```
-yang-modelling/
+poma/
 ├── .github/                    # GitHub configuration
 │   └── workflows/
 │       └── docs.yml           # Documentation deployment

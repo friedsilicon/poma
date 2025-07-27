@@ -1,11 +1,11 @@
-site_name: YANG Modelling Documentation
+site_name: PoMa Documentation
 site_description: Comprehensive YANG model validation and tooling
-site_author: YANG Modelling Team
-site_url: https://yourusername.github.io/yang-modelling
+site_author: PoMa Team
+site_url: https://friedsilicon.github.io/poma
 
 # Repository
-repo_name: yourusername/yang-modelling
-repo_url: https://github.com/yourusername/yang-modelling
+repo_name: friedsilicon/poma
+repo_url: https://github.com/friedsilicon/poma
 
 # Configuration
 theme:

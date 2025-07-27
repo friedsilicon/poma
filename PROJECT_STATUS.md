@@ -54,7 +54,7 @@
 
 ### Immediate
 1. **Push changes to trigger GitHub Actions workflow**
-2. **Verify documentation deployment** at `https://yourusername.github.io/yang-modelling`
+2. **Verify documentation deployment** at `https://yourusername.github.io/poma`
 3. **Test validation scripts** with actual YANG models
 
 ### Optional Enhancements
@@ -66,7 +66,7 @@
 ## 📁 Current Project Structure
 
 ```
-yang-modelling/
+poma/
 ├── .gitmodules                    # Renamed submodule configuration
 ├── .gitignore                     # Comprehensive ignore rules
 ├── requirements.txt               # All Python dependencies

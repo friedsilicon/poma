@@ -4,7 +4,7 @@ This project uses **MkDocs with Material theme** for documentation, auto-publish
 
 ## View Documentation
 
-**Live Site:** [https://yourusername.github.io/yang-modelling](https://yourusername.github.io/yang-modelling)
+**Live Site:** [https://yourusername.github.io/poma](https://yourusername.github.io/poma)
 
 ## Local Development
 

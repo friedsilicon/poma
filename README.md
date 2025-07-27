@@ -1,4 +1,4 @@
-# YANG Modelling
+# PoMa
 
 For the cursed, and the fallen. We are forced to live with YANG, so let's make it tolerable.
 
@@ -8,8 +8,8 @@ A comprehensive collection of YANG models and validation tools for network autom
 
 ```bash
 # Clone with submodules
-git clone --recursive <your-repo-url>
-cd yang-modelling
+git clone --recursive https://github.com/friedsilicon/poma.git
+cd poma
 
 # Setup environment
 ./setup-dev-env.sh
@@ -21,7 +21,7 @@ cd models && ./validate-bgp.sh -t
 
 ## 📚 Documentation
 
-**Full documentation is available [here](https://shiva.github.io/yang-modelling)**
+**Full documentation is available [here](https://friedsilicon.github.io/poma)**
 
 - **[Getting Started](docs/getting-started/quick-start.md)** - Setup and first steps
 - **[Validation Guide](docs/user-guide/validation.md)** - BGP model validation workflows  
