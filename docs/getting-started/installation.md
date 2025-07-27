@@ -43,7 +43,7 @@ cd poma
 
 ### 2. Setup Development Environment
 ```bash
-./setup-dev-env.sh
+./scripts/setup-dev-env.sh
 ```
 
 This script will:
@@ -54,7 +54,7 @@ This script will:
 
 ### 3. Setup Model Symlinks
 ```bash
-./setup-bgp-models.sh
+./scripts/setup-bgp-models.sh
 ```
 
 This creates organized symlinks for:

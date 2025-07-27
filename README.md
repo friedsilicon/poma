@@ -12,7 +12,7 @@ git clone --recursive https://github.com/friedsilicon/poma.git
 cd poma
 
 # Setup environment
-./setup-dev-env.sh
+./scripts/setup-dev-env.sh
 
 # Test BGP models
 source venv/bin/activate
@@ -42,6 +42,7 @@ cd models && ./validate-bgp.sh -t
 │   ├── nokia/              # Nokia SROS models
 │   ├── openconfig/         # OpenConfig models
 │   └── ietf/               # IETF standard types
+├── scripts/                # Setup and utility scripts
 ├── docs/                   # Documentation (MkDocs)
 ├── requirements.txt        # All dependencies (YANG tools + docs)
 ├── open-config/            # OpenConfig submodule
@@ -51,17 +52,17 @@ cd models && ./validate-bgp.sh -t
 ## 🛠️ Key Commands
 
 ```bash
-# Validate all BGP models
-./validate-bgp.sh
+# Validate all BGP models (from models/ directory)
+cd models && ./validate-bgp.sh
 
 # Nokia BGP with tree output
-./validate-nokia-bgp.sh -t
+cd models && ./validate-nokia-bgp.sh -t
 
 # Quiet mode for CI
 ./validate-bgp.sh -q
 
 # Help for any script
-./validate-bgp.sh -h
+cd models && ./validate-bgp.sh -h
 ```
 
 ## 📖 Local Documentation

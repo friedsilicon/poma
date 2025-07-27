@@ -167,7 +167,7 @@ git submodule update --remote
 git submodule update --remote yang-models-nokia
 
 # Recreate symlinks after updates
-./setup-bgp-models.sh
+./scripts/setup-bgp-models.sh
 ```
 
 ### Adding New Models

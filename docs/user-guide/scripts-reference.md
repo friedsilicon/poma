@@ -10,7 +10,7 @@ Sets up the Python development environment with all dependencies.
 
 **Usage:**
 ```bash
-./setup-dev-env.sh
+./scripts/setup-dev-env.sh
 ```
 
 **What it does:**
@@ -41,7 +41,7 @@ Creates organized symlinks for BGP models and dependencies.
 
 **Usage:**
 ```bash
-./setup-bgp-models.sh
+./scripts/setup-bgp-models.sh
 ```
 
 **What it does:**
@@ -246,7 +246,7 @@ Validating Nokia BGP models...
 set -e
 
 # Setup environment
-./setup-dev-env.sh
+./scripts/setup-dev-env.sh
 source venv/bin/activate
 
 # Validate all models
@@ -298,7 +298,7 @@ chmod +x validate-*.sh setup-*.sh
 
 **Virtual environment not found:**
 ```bash
-./setup-dev-env.sh  # Recreate environment
+./scripts/setup-dev-env.sh  # Recreate environment
 source venv/bin/activate
 ```
 
@@ -310,7 +310,7 @@ pip install -r requirements.txt
 
 **Symlink errors:**
 ```bash
-./setup-bgp-models.sh  # Recreate symlinks
+./scripts/setup-bgp-models.sh  # Recreate symlinks
 ls -la models/*/  # Verify links
 ```
 

@@ -10,7 +10,7 @@ This guide covers adding new vendor models, protocols, or updating existing mode
 
 ### Prerequisites
 
-- Development environment set up (`./setup-dev-env.sh`)
+- Development environment set up (`./scripts/setup-dev-env.sh`)
 - Understanding of the target vendor's YANG model structure
 - Git submodule experience
 - Basic YANG knowledge
@@ -83,7 +83,7 @@ Create symlinks to organize models from the submodule:
 
 ```bash
 #!/bin/bash
-# add to setup-bgp-models.sh or create setup-cisco-models.sh
+# add to scripts/setup-bgp-models.sh or create scripts/setup-cisco-models.sh
 
 # Cisco BGP models (example paths - adjust based on actual structure)
 CISCO_SOURCE="yang-models-cisco/vendor/cisco/xe/16101"
@@ -244,12 +244,12 @@ chmod +x validate-cisco-bgp.sh
 Add the new vendor to existing setup scripts:
 
 ```bash
-# Update setup-bgp-models.sh
+# Update scripts/setup-bgp-models.sh
 echo "Setting up Cisco BGP models..."
-./setup-cisco-models.sh  # Or inline the symlink creation
+./scripts/setup-cisco-models.sh  # Or inline the symlink creation
 
 # Or create a comprehensive setup script
-# setup-all-models.sh that calls individual vendor scripts
+# scripts/setup-all-models.sh that calls individual vendor scripts
 ```
 
 ### Step 8: Create Documentation
@@ -357,7 +357,7 @@ cp validate-openconfig-bgp.sh validate-openconfig-ospf.sh
 #### Step 4: Update Setup Scripts
 
 ```bash
-# Extend setup-bgp-models.sh or create setup-ospf-models.sh
+# Extend scripts/setup-bgp-models.sh or create scripts/setup-ospf-models.sh
 echo "Setting up OSPF models..."
 
 # Nokia OSPF models

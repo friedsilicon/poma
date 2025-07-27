@@ -268,7 +268,7 @@ error: module "nokia-sr-common" not found in models/nokia/nokia-sr-bgp.yang
 
 **Solution:** Verify symlinks and dependencies
 ```bash
-./setup-bgp-models.sh  # Recreate symlinks
+./scripts/setup-bgp-models.sh  # Recreate symlinks
 ls -la models/nokia/   # Check symlink integrity
 ```
 

@@ -18,13 +18,13 @@ We welcome contributions to improve YANG model validation, add new vendor suppor
 
 2. **Set up development environment:**
    ```bash
-   ./setup-dev-env.sh
+   ./scripts/setup-dev-env.sh
    source venv/bin/activate
    ```
 
 3. **Initialize models:**
    ```bash
-   ./setup-bgp-models.sh
+   ./scripts/setup-bgp-models.sh
    ```
 
 4. **Verify setup:**

@@ -21,12 +21,12 @@ pip install -r requirements.txt
 
 **Issue: Permission denied on setup scripts**
 ```
-bash: ./setup-dev-env.sh: Permission denied
+bash: ./scripts/setup-dev-env.sh: Permission denied
 ```
 
 **Solution:**
 ```bash
-chmod +x setup-dev-env.sh setup-bgp-models.sh validate-*.sh
+chmod +x scripts/setup-dev-env.sh scripts/setup-bgp-models.sh validate-*.sh
 ```
 
 ### Dependency Installation
@@ -112,7 +112,7 @@ yanglint[E]: Module "ietf-yang-types" not found
 **Solution:**
 ```bash
 # Ensure all dependencies are symlinked
-./setup-bgp-models.sh
+./scripts/setup-bgp-models.sh
 
 # Check symlinks
 ls -la models/ietf/
@@ -132,7 +132,7 @@ cd models
 find . -name "nokia-sros-yang-extensions.yang"
 
 # Re-run setup if missing
-cd .. && ./setup-bgp-models.sh
+cd .. && ./scripts/setup-bgp-models.sh
 ```
 
 **Issue: Circular import errors**
@@ -288,7 +288,7 @@ git submodule update --init --recursive
 
 # Reinstall Python environment
 rm -rf venv
-./setup-dev-env.sh
+./scripts/setup-dev-env.sh
 
 # Rebuild documentation
 rm -rf site/

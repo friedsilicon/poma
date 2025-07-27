@@ -25,7 +25,7 @@ cd poma
 
 ```bash
 # One-time setup (installs Python dependencies)
-./setup-dev-env.sh
+./scripts/setup-dev-env.sh
 ```
 
 This script will:
@@ -102,13 +102,13 @@ source venv/bin/activate
 git submodule update --init --recursive
 
 # Re-run setup
-./setup-bgp-models.sh
+./scripts/setup-bgp-models.sh
 ```
 
 **Virtual environment missing**
 ```bash
 # Re-run setup script
-./setup-dev-env.sh
+./scripts/setup-dev-env.sh
 ```
 
 For more troubleshooting help, see [Troubleshooting Guide](troubleshooting.md).

@@ -16,8 +16,10 @@ poma/
 ├── README.md                  # Quick start guide
 ├── requirements.txt           # Python dependencies
 ├── mkdocs.yml                # Documentation configuration
-├── setup-dev-env.sh          # Environment setup script
-├── setup-bgp-models.sh       # Model symlink script
+├── scripts/                  # Setup and utility scripts
+│   ├── setup-dev-env.sh      # Environment setup script
+│   ├── setup-bgp-models.sh   # Model symlink script
+│   └── test-yang-tools.py    # YANG tools test script
 ├── validate-*.sh             # Validation scripts
 ├── docs/                     # MkDocs documentation
 ├── models/                   # Organized YANG models (symlinks)
@@ -78,17 +80,24 @@ lxml>=4.9.0
 
 #### Setup Scripts
 
-**`setup-dev-env.sh`** - Development environment setup
+The `scripts/` directory contains all setup and utility scripts:
+
+**`scripts/setup-dev-env.sh`** - Development environment setup
 - Creates Python virtual environment
 - Installs all dependencies
 - Verifies tool installation
 - Checks system requirements
 
-**`setup-bgp-models.sh`** - Model organization
+**`scripts/setup-bgp-models.sh`** - Model organization
 - Creates vendor directories
 - Establishes symlinks to submodule sources
 - Organizes dependencies
 - Verifies link integrity
+
+**`scripts/test-yang-tools.py`** - YANG tools testing
+- Tests pyang installation and functionality
+- Validates basic YANG parsing capabilities
+- Provides diagnostic information
 
 ### Model Organization
 
@@ -348,7 +357,7 @@ lxml>=4.9.0                  # XML processing
 
 ```bash
 # Setup
-./setup-dev-env.sh
+./scripts/setup-dev-env.sh
 source venv/bin/activate
 
 # Validation
@@ -382,7 +391,7 @@ mkdocs serve  # http://localhost:8000
 4. **Documentation:** `docs/models/vendor.md`
 
 **Integration:**
-- Update `setup-bgp-models.sh`
+- Update `scripts/setup-bgp-models.sh`
 - Update navigation in `mkdocs.yml`
 - Add to models overview documentation
 

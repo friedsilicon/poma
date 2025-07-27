@@ -23,7 +23,7 @@ git clone --recursive <your-repo-url>
 cd poma
 
 # Setup environment
-./setup-dev-env.sh
+./scripts/setup-dev-env.sh
 
 # Test BGP models
 source venv/bin/activate

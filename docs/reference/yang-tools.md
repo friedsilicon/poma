@@ -87,8 +87,8 @@ yanglint -s model.yang data.json
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
-| `setup-dev-env.sh` | Setup Python environment | `./setup-dev-env.sh` |
-| `setup-bgp-models.sh` | Create model symlinks | `./setup-bgp-models.sh` |
+| `scripts/setup-dev-env.sh` | Setup Python environment | `./scripts/setup-dev-env.sh` |
+| `scripts/setup-bgp-models.sh` | Create model symlinks | `./scripts/setup-bgp-models.sh` |
 
 ## Advanced Usage
 

@@ -367,11 +367,11 @@ shellcheck --format=json script.sh
 
 ```bash
 # 1. Setup environment
-./setup-dev-env.sh
+./scripts/setup-dev-env.sh
 source venv/bin/activate
 
 # 2. Initialize models
-./setup-bgp-models.sh
+./scripts/setup-bgp-models.sh
 
 # 3. Basic validation
 ./validate-bgp.sh -q
@@ -393,7 +393,7 @@ pyang --format=jstree models/nokia/nokia-sr-bgp.yang > nokia-bgp-tree.html
 set -euo pipefail
 
 echo "Setting up environment..."
-./setup-dev-env.sh
+./scripts/setup-dev-env.sh
 source venv/bin/activate
 
 echo "Validating models..."
@@ -583,11 +583,11 @@ develop_model() {
     local vendor="$1"
     
     # Setup
-    ./setup-dev-env.sh
+    ./scripts/setup-dev-env.sh
     source venv/bin/activate
     
     # Create symlinks
-    ./setup-bgp-models.sh
+    ./scripts/setup-bgp-models.sh
     
     # Validate
     "./validate-${vendor}-bgp.sh" -v

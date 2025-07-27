@@ -468,7 +468,7 @@ error: module "openconfig-bgp-types" not found
 
 **Solution:** Ensure complete OpenConfig model set
 ```bash
-./setup-bgp-models.sh  # Recreate all symlinks
+./scripts/setup-bgp-models.sh  # Recreate all symlinks
 ls -la models/openconfig/  # Verify all dependencies
 ```
 
