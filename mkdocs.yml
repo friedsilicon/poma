@@ -64,7 +64,8 @@ nav:
     - Overview: models/index.md
     - Nokia Models: models/nokia.md
     - OpenConfig Models: models/openconfig.md
-    - BGP Model Comparison: models/bgp-models-comparison.md
+    - BGP State Comparison: models/bgp-state-comparison.md
+    - BGP Config Comparison: models/bgp-config-comparison.md
     - Assessment: models/assessment.md
   - Examples:
     - NETCONF XML Samples: examples/netconf-xml-samples.md

@@ -7,321 +7,149 @@ Comprehensive documentation for Nokia SROS YANG models in the workspace.
 Nokia SROS (Service Router Operating System) provides YANG models for network configuration and management. This workspace includes the core BGP-related models and their dependencies.
 
 **Source Repository:** [Nokia 7x50 YANG Models](https://github.com/nokia/7x50-YangModels)  
-**Local Path:** `yang-models-nokia/`  
-**Symlink Location:** `models/nokia/`
+**Local Path:** `nokia/`  
+**Symlink Location:** `models/nokia/`  
+**Version:** **SROS 25.7 (Latest)**
+
+## 🆕 Latest Updates
+
+- ✅ **Upgraded to SROS 25.7** - Latest Nokia version with newest BGP features
+- ✅ **Added Configuration Models** - Both state and configuration models available
+- ✅ **Enhanced Validation** - Improved validation with proper dependencies
+- ✅ **Better Organization** - Cleaner model structure and documentation
 
 ## Available Models
 
-### Core BGP Models
+### BGP State Models (Monitoring & Telemetry)
 
-#### `nokia-sr-bgp.yang`
-**Description:** Main BGP configuration model for Nokia SROS  
-**Location:** `models/nokia/nokia-sr-bgp.yang`  
-**Status:** ✅ Validated
+#### `nokia-state-router-bgp.yang`
+**Description:** BGP operational state model for monitoring and telemetry  
+**Location:** `models/nokia/bgp/nokia-state-router-bgp.yang`  
+**Version:** SROS 25.7  
+**Status:** ✅ Validated (types), ⚠️ Complex dependencies (expected)
+
+**Key Features:**
+- BGP neighbor operational state
+- BGP session statistics and counters
+- Route table information
+- BGP policy application state
+- Performance metrics and monitoring data
+
+#### `nokia-state.yang`
+**Description:** Main Nokia state model (includes BGP submodule)  
+**Location:** `models/nokia/common/nokia-state.yang`  
+**Version:** SROS 25.7  
+**Status:** ⚠️ Complex dependencies (expected for full model)
+
+### BGP Configuration Models (Device Management)
+
+#### `nokia-conf-router-bgp.yang`
+**Description:** BGP configuration model for device configuration  
+**Location:** `models/nokia/config/nokia-conf-router-bgp.yang`  
+**Version:** SROS 25.7  
+**Status:** ✅ Available, ⚠️ Complex dependencies (expected)
 
 **Key Features:**
 - BGP global configuration
-- Neighbor configuration and policies
+- Neighbor configuration and policies  
 - Route filtering and redistribution
 - BGP communities and extended communities
 - Multi-protocol BGP support (IPv4, IPv6, VPN)
+- Administrative state controls
 
-**Structure:**
-```
-module: nokia-sr-bgp
-  +--rw configure
-     +--rw router* [router-name]
-        +--rw bgp
-           +--rw admin-state?            nokia-types:admin-state
-           +--rw router-id?              inet:ipv4-address
-           +--rw cluster-id?             inet:ipv4-address
-           +--rw confederation?          uint32
-           +--rw local-as?               uint32
-           +--rw neighbor* [ip-address]
-           |  +--rw ip-address           inet:ip-address
-           |  +--rw admin-state?         nokia-types:admin-state
-           |  +--rw peer-as?             uint32
-           |  +--rw local-as?            uint32
-           |  +--rw authentication-key? nokia-types:encrypted-leaf
-           +--rw group* [group-name]
-           +--rw policy-options
-           +--rw route-reflector
-```
+**For detailed configuration examples and comparisons with OpenConfig, see [BGP Configuration Model Comparison](bgp-config-comparison.md).**
 
-#### `nokia-sr-common.yang`
-**Description:** Common types and definitions used across Nokia models  
-**Location:** `models/nokia/nokia-sr-common.yang`  
-**Status:** ✅ Validated
+#### `nokia-conf.yang`
+**Description:** Main Nokia configuration model (includes BGP submodule)  
+**Location:** `models/nokia/config/nokia-conf.yang`  
+**Version:** SROS 25.7  
+**Status:** ⚠️ Complex dependencies (expected for full model)
 
-**Provides:**
-- Common data types (`nokia-types`)
-- Shared configuration patterns
-- Administrative state definitions
-- Interface references
+## Type Definitions (Standalone & Validated)
 
-### Extension Models
+#### `nokia-types-bgp.yang`
+**Description:** BGP-specific type definitions  
+**Location:** `models/nokia/types/nokia-types-bgp.yang`  
+**Version:** SROS 25.7  
+**Status:** ✅ **Fully Validated**
 
 #### `nokia-sros-yang-extensions.yang`
-**Description:** Nokia-specific YANG extensions  
-**Location:** `models/nokia/nokia-sros-yang-extensions.yang`  
-**Status:** ✅ Validated
+**Description:** Nokia SROS YANG extensions and annotations  
+**Location:** `models/nokia/types/nokia-sros-yang-extensions.yang`  
+**Version:** SROS 25.7  
+**Status:** ✅ **Fully Validated**
 
-**Extensions:**
-- `nokia-sros-yang-extensions:oper-flag` - Operational state indicators
-- `nokia-sros-yang-extensions:immutable` - Configuration immutability
-- `nokia-sros-yang-extensions:auto-restart` - Service restart behavior
+## Quick Reference
 
-#### `nokia-sr-types.yang`
-**Description:** Nokia-specific data types and identities  
-**Location:** `models/nokia/nokia-sr-types.yang`  
-**Status:** ✅ Validated
+### File Locations
+```
+models/nokia/
+├── bgp/                    # BGP state models
+│   └── nokia-state-router-bgp.yang
+├── config/                 # BGP configuration models  
+│   ├── nokia-conf-router-bgp.yang
+│   └── nokia-conf.yang
+├── common/                 # Common state models
+│   ├── nokia-state.yang
+│   └── nokia-state-router.yang
+└── types/                  # Type definitions
+    ├── nokia-types-bgp.yang
+    └── nokia-sros-yang-extensions.yang
+```
 
-**Defines:**
-- Administrative states
-- Interface types  
-- Protocol identities
-- Custom data types for Nokia equipment
+### Validation Status
+- ✅ **Types and Extensions**: Fully validated standalone
+- ✅ **State Models**: Available with expected complex dependencies
+- ✅ **Configuration Models**: Available with expected complex dependencies
+- ✅ **Version**: Latest SROS 25.7
+
+### Usage Examples
+```bash
+# Validate Nokia BGP types (works standalone)
+pyang --strict --path nokia/types:ietf nokia/types/nokia-types-bgp.yang
+
+# Analyze Nokia BGP state structure  
+pyang -f tree --tree-depth 3 nokia/bgp/nokia-state-router-bgp.yang
+
+# Analyze Nokia BGP config structure
+pyang -f tree --tree-depth 3 nokia/config/nokia-conf-router-bgp.yang
+```
+
+## Detailed Analysis
+
+For comprehensive analysis and comparisons:
+- **[BGP State Model Comparison](bgp-state-comparison.md)** - State models for monitoring
+- **[BGP Configuration Model Comparison](bgp-config-comparison.md)** - Configuration models for management
 
 ## Model Dependencies
 
-### Dependency Graph
-
-```mermaid
-graph TD
-    A[nokia-sr-bgp.yang] --> B[nokia-sr-common.yang]
-    A --> C[nokia-sros-yang-extensions.yang]
-    A --> D[nokia-sr-types.yang]
-    B --> E[ietf-yang-types.yang]
-    B --> F[ietf-inet-types.yang]
-    C --> G[ietf-yang-types.yang]
-```
+Nokia BGP models have several dependencies that are automatically handled by the project setup:
 
 ### Required Dependencies
-
-To use Nokia BGP models, ensure these dependencies are available:
-
 **IETF Standards:**
 - `ietf-yang-types.yang` - Standard YANG types
 - `ietf-inet-types.yang` - Internet address types
 
 **Nokia Specific:**
-- `nokia-sr-common.yang` - Common definitions
-- `nokia-sros-yang-extensions.yang` - Nokia extensions
-- `nokia-sr-types.yang` - Nokia-specific types
+- `nokia-types-bgp.yang` - BGP-specific types
+- `nokia-types-router.yang` - Router types
+- `nokia-types-services.yang` - Service types
+- `nokia-sros-yang-extensions.yang` - Nokia YANG extensions
 
-## Validation Examples
-
-### Basic Validation
-
-```bash
-# Validate Nokia BGP model
-./validate-nokia-bgp.sh
-
-# Output:
-# Validating Nokia BGP models...
-# ✓ nokia-sr-bgp.yang: Valid
-# ✓ nokia-sr-common.yang: Valid
-# ✓ nokia-sros-yang-extensions.yang: Valid
-# Summary: 3 models validated, 0 errors
-```
-
-### Tree Structure Generation
+### Validation
 
 ```bash
-# Generate tree for Nokia BGP
-./validate-nokia-bgp.sh -t
+# Run validation (from models directory)
+./validate-bgp.sh
 
-# Or using pyang directly
-pyang --format=tree --path=models/nokia:models/ietf models/nokia/nokia-sr-bgp.yang
+# Expected output:
+# 📋 Nokia SROS BGP Types (Standalone Models):
+#   ✅ Nokia BGP types: VALID
+#   ✅ Nokia SROS extensions: VALID
 ```
 
-### Dependency Checking
+## Notes
 
-```bash
-# Check dependencies
-./validate-nokia-bgp.sh -d
-
-# Manual dependency check
-pyang --print-error-code --path=models/nokia:models/ietf models/nokia/nokia-sr-bgp.yang
-```
-
-## Configuration Examples
-
-### Basic BGP Configuration
-
-```yang
-configure {
-    router "Base" {
-        bgp {
-            admin-state enable;
-            router-id 192.168.1.1;
-            local-as 65001;
-            
-            neighbor "192.168.1.2" {
-                admin-state enable;
-                peer-as 65002;
-                authentication-key "secret123";
-            }
-        }
-    }
-}
-```
-
-### Route Reflector Setup
-
-```yang
-configure {
-    router "Base" {
-        bgp {
-            cluster-id 1.1.1.1;
-            route-reflector {
-                client "192.168.1.10";
-                client "192.168.1.11";
-            }
-        }
-    }
-}
-```
-
-### BGP Communities
-
-```yang
-configure {
-    router "Base" {
-        bgp {
-            policy-options {
-                community "LOCAL_PREF_HIGH" {
-                    member "65001:100";
-                }
-            }
-        }
-    }
-}
-```
-
-## Nokia-Specific Features
-
-### Administrative States
-
-Nokia models use specific administrative state values:
-- `enable` - Service is operational
-- `disable` - Service is shut down
-- `maintenance` - Service is in maintenance mode
-
-### Immutable Configuration
-
-Some Nokia configuration elements are immutable (cannot be changed without service restart):
-```yang
-// Example: Local AS cannot be changed online
-local-as 65001; // Immutable after commit
-```
-
-### Auto-Restart Services
-
-Nokia extensions indicate when configuration changes trigger automatic service restarts:
-```yang
-// BGP neighbor changes may auto-restart sessions
-neighbor "192.168.1.2" {
-    peer-as 65002; // May trigger session restart
-}
-```
-
-## Version Compatibility
-
-### Supported SROS Versions
-
-The Nokia models in this workspace are compatible with:
-- **SROS 20.x** - Full compatibility
-- **SROS 21.x** - Full compatibility  
-- **SROS 22.x** - Full compatibility
-- **SROS 23.x** - Full compatibility (latest)
-
-### Model Versioning
-
-Nokia models include version information:
-```yang
-revision "2023-07-01" {
-    description "SROS 23.7.R1 release";
-}
-```
-
-## Common Issues
-
-### Extension Resolution
-
-**Issue:** Extension not found
-```
-error: extension "nokia-sros-yang-extensions:immutable" not found
-```
-
-**Solution:** Ensure extension model is in YANG path
-```bash
-pyang --path=models/nokia:models/ietf models/nokia/nokia-sr-bgp.yang
-```
-
-### Import Errors
-
-**Issue:** Module import failure
-```
-error: module "nokia-sr-common" not found in models/nokia/nokia-sr-bgp.yang
-```
-
-**Solution:** Verify symlinks and dependencies
-```bash
-./scripts/setup-bgp-models.sh  # Recreate symlinks
-ls -la models/nokia/   # Check symlink integrity
-```
-
-### Circular Dependencies
-
-**Issue:** Circular import detected
-```
-error: circular dependency between modules
-```
-
-**Solution:** Review import order, may need to split models
-
-## Advanced Usage
-
-### Custom Validation Rules
-
-Create Nokia-specific validation rules:
-```bash
-#!/bin/bash
-# validate-nokia-custom.sh
-
-# Check for Nokia-specific patterns
-grep -r "nokia-sros-yang-extensions:" models/nokia/ || echo "No extensions found"
-
-# Validate against specific SROS version
-pyang --sros-version=23.7 models/nokia/nokia-sr-bgp.yang
-```
-
-### Configuration Generation
-
-Generate sample configurations:
-```bash
-# Generate sample config from model
-pyang --format=sample-xml-skeleton models/nokia/nokia-sr-bgp.yang > nokia-bgp-sample.xml
-```
-
-### Documentation Generation
-
-Create HTML documentation:
-```bash
-pyang --format=jstree models/nokia/nokia-sr-bgp.yang > nokia-bgp-doc.html
-```
-
-## Related Documentation
-
-- [Models Overview](../user-guide/models-overview.md) - All available models
-- [OpenConfig Models](openconfig.md) - OpenConfig alternatives
-- [Validation Workflows](../user-guide/validation.md) - Testing procedures
-- [Scripts Reference](../user-guide/scripts-reference.md) - Nokia validation scripts
-
-## External Resources
-
-- [Nokia YANG Model Repository](https://github.com/nokia/7x50-YangModels)
-- [Nokia SROS Documentation](https://documentation.nokia.com/sr/)
-- [YANG RFC 7950](https://tools.ietf.org/html/rfc7950)
-- [Nokia SR OS YANG Guide](https://documentation.nokia.com/sr/)
+- **Complex Dependencies**: Full BGP models (state and config) have complex interdependencies which is normal for enterprise networking models
+- **Standalone Validation**: Type definitions and extensions validate successfully as standalone models
+- **Latest Version**: All models use SROS 25.7 for access to the newest BGP features and fixes

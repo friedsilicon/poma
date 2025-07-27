@@ -2,134 +2,44 @@
 
 This section provides detailed information about the YANG models available in this repository.
 
-## Nokia Models
+## 📊 Model Comparisons
 
-### BGP Models (SROS 19.10)
+### Comprehensive Comparisons
+- **[BGP State Model Comparison](bgp-state-comparison.md)** - Nokia vs OpenConfig state models for monitoring
+- **[BGP Configuration Model Comparison](bgp-config-comparison.md)** - Nokia vs OpenConfig config models for management
 
-| Model | Status | Tree Generation | Description |
-|-------|--------|----------------|-------------|
-| `nokia-state-router-bgp.yang` | ✅ **FULLY FUNCTIONAL** | ✅ **WORKING** | BGP router submodule |
-| `nokia-state-bgp-only.yang` | ✅ **FULLY FUNCTIONAL** | ✅ **WORKING** | BGP-only test model |
-| `nokia-state-router.yang` | ⚠️ **PARTIAL** | ⚠️ **PARTIAL** | Complete router state |
+### Individual Model Details
+- **[Nokia Models Overview](nokia.md)** - Nokia SROS-specific model details
+- **[OpenConfig Models Overview](openconfig.md)** - OpenConfig model details
+- **[Assessment](assessment.md)** - Current implementation status
 
-!!! success "Recommended for BGP Work"
-    The Nokia BGP submodule and BGP-only test model are fully functional and recommended for BGP modeling work.
+## Quick Status Overview
 
-### Nokia Model Structure
+### Nokia SROS 25.7 (Latest)
 
-```
-models/nokia/
-├── bgp/           # BGP-specific models
-├── types/         # Type definitions
-├── router/        # Router submodules  
-├── common/        # Common modules
-└── test/          # Test/validation models
-```
+| Model Type | Status | Notes |
+|------------|--------|-------|
+| **BGP Types** | ✅ **Fully Validated** | Standalone validation works |
+| **BGP State Models** | ✅ Available | Complex dependencies (expected) |
+| **BGP Config Models** | ✅ Available | Complex dependencies (expected) |
+| **Extensions** | ✅ **Fully Validated** | SROS YANG extensions validated |
 
-### Notable Features
+### OpenConfig
 
-- **Complete BGP functionality**: Full BGP state model validation
-- **Tree generation**: Comprehensive YANG tree output
-- **Type dependencies**: All required Nokia types included
-- **Test models**: Simplified models for validation and examples
+| Model Type | Status | Notes |
+|------------|--------|-------|
+| **BGP Types** | ✅ **Fully Validated** | Standalone validation works |
+| **BGP Main Models** | ✅ Available | Complex dependencies (expected) |
+| **Extensions** | ✅ **Fully Validated** | OpenConfig extensions validated |
+| **Policy Models** | ✅ Available | Complex dependencies (expected) |
 
-## OpenConfig Models
+## Getting Started
 
-### BGP Models
+1. **Quick Setup**: Run `make setup` for complete environment
+2. **Validation**: Run `./validate-bgp.sh` from the `models/` directory  
+3. **Detailed Analysis**: Review the comparison documents above
+4. **Model Exploration**: Use `pyang -f tree` commands for structure analysis
 
-| Model | Status | Tree Generation | Description |
-|-------|--------|----------------|-------------|
-| `openconfig-bgp.yang` | ✅ **FUNCTIONAL** | ✅ **WORKING** | Main BGP configuration |
-| `openconfig-bgp-policy.yang` | ⚠️ **PARTIAL** | ⚠️ **PARTIAL** | BGP policy model |
-| `openconfig-bgp-types.yang` | ✅ **FUNCTIONAL** | ✅ **WORKING** | BGP type definitions |
+## Key Improvements
 
-!!! success "BGP Main Model Working"
-    The main OpenConfig BGP model is now functional with proper dependencies and can generate tree structures.
-
-### OpenConfig Model Structure
-
-```
-models/openconfig/
-├── bgp/           # BGP models
-├── types/         # Type definitions
-├── extensions/    # OpenConfig extensions
-├── rib/           # RIB models
-└── common/        # Common modules
-```
-
-### Known Issues
-
-- Missing `openconfig-bgp-errors` module
-- Missing additional extension modules
-- Individual components may validate but full model needs dependencies
-
-## IETF Models
-
-### Standard Types
-
-| Model | Status | Description |
-|-------|--------|-------------|
-| IETF Standard Types | ✅ **WORKING** | Standard type definitions |
-
-The IETF modules provide standard type definitions used by both vendor implementations.
-
-## Model Organization
-
-Models are organized using symlinks for easy navigation and version control:
-
-```
-models/
-├── nokia/              # Nokia-specific organization
-│   ├── bgp/           # BGP models only
-│   ├── types/         # All type definitions
-│   ├── router/        # Router submodules
-│   ├── common/        # Common modules
-│   └── test/          # Test models
-├── openconfig/         # OpenConfig organization
-│   ├── bgp/           # BGP models
-│   ├── types/         # Type definitions
-│   ├── extensions/    # Extensions
-│   ├── rib/           # RIB models
-│   └── common/        # Common modules
-└── ietf/              # IETF standard types
-```
-
-## Usage Examples
-
-### Nokia Examples
-
-```bash
-# Validate Nokia BGP submodule
-pyang --strict --path nokia/types:ietf nokia/bgp/nokia-state-router-bgp.yang
-
-# Generate Nokia BGP tree
-pyang -f tree --path nokia/types:nokia/router:ietf nokia/test/nokia-state-bgp-only.yang
-
-# Validate using scripts
-./validate-nokia-bgp.sh -t
-```
-
-### OpenConfig Examples
-
-```bash
-# Validate OpenConfig BGP main model
-pyang --strict -p openconfig -p ietf -p ../open-config/release/models openconfig/bgp/openconfig-bgp.yang
-
-# Generate OpenConfig BGP tree (groupings)
-pyang -f tree --tree-print-groupings -p openconfig -p ietf -p ../open-config/release/models openconfig/bgp/openconfig-bgp.yang
-
-# Using scripts for analysis
-./validate-openconfig-bgp.sh -t
-```
-
-## Next Steps
-
-- **[Nokia Models Details](nokia.md)**: Detailed Nokia model information
-- **[OpenConfig Models Details](openconfig.md)**: OpenConfig model specifics  
-- **[BGP Model Comparison](bgp-models-comparison.md)**: Comparative analysis of Nokia vs OpenConfig BGP models
-- **[Assessment](assessment.md)**: Analysis of making more models work
-
-## Practical Examples
-
-- **[NETCONF XML Samples](../examples/netconf-xml-samples.md)**: Complete NETCONF XML examples for both models
-- **[Model Incompatibilities](../examples/model-incompatibilities.md)**: Side-by-side comparisons and migration challenges
+- ✅ **Latest Nokia Version**: Now using SROS 25.7 (latest available)

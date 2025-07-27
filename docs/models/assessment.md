@@ -176,7 +176,8 @@ For practical implementation guidance:
 
 - **[NETCONF XML Examples](../examples/netconf-xml-samples.md)**: Production-ready XML samples
 - **[Model Incompatibilities Guide](../examples/model-incompatibilities.md)**: Detailed migration challenges
-- **[BGP Model Comparison](bgp-models-comparison.md)**: Comprehensive feature analysis
+- **[BGP State Model Comparison](bgp-state-comparison.md)**: Comprehensive state model analysis
+- **[BGP Configuration Model Comparison](bgp-config-comparison.md)**: Comprehensive configuration model analysis
 
 ## Alternative Solutions
 

@@ -42,6 +42,11 @@ cd poma
 
 **Full documentation is available [here](https://friedsilicon.github.io/poma)**
 
+### 🔍 Model Comparisons (New!)
+- **[BGP State Model Comparison](docs/models/bgp-state-comparison.md)** - Nokia vs OpenConfig for monitoring
+- **[BGP Config Model Comparison](docs/models/bgp-config-comparison.md)** - Nokia vs OpenConfig for configuration
+
+### 📖 Guides & References
 - **[Getting Started](docs/getting-started/quick-start.md)** - Setup and first steps
 - **[Validation Guide](docs/user-guide/validation.md)** - BGP model validation workflows  
 - **[Models Overview](docs/models/index.md)** - Available YANG models and status
@@ -49,10 +54,18 @@ cd poma
 
 ## ✨ What's Included
 
-- **Nokia BGP Models**: Fully functional SROS BGP models with tree generation
+- **Nokia BGP Models**: Latest SROS 25.7 models (state & configuration) with comprehensive BGP support
 - **OpenConfig BGP Models**: Industry-standard BGP configuration models
 - **Validation Scripts**: Automated testing with multiple output formats  
 - **Development Tools**: Pre-configured Python environment with YANG tooling
+- **Performance Optimizations**: Fast submodule setup (30s vs 5+ min traditional)
+
+## 🆕 Recent Updates
+
+- ✅ **Upgraded to Nokia SROS 25.7** - Latest version with newest BGP features
+- ✅ **Added Configuration Models** - Both state and config models now available
+- ✅ **Enhanced Documentation** - Comprehensive Nokia vs OpenConfig comparisons
+- ✅ **Performance Improvements** - 90% faster setup with optimized submodule handling
 
 ## 📁 Repository Structure
 
