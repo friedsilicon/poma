@@ -171,3 +171,7 @@ secrets.yaml
 *.key
 *.pem
 *.crt
+
+# Temporary analysis and scripts
+tmp/
+temp/

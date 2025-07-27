@@ -64,6 +64,7 @@ nav:
     - Overview: models/index.md
     - Nokia Models: models/nokia.md
     - OpenConfig Models: models/openconfig.md
+    - BGP Model Comparison: models/bgp-models-comparison.md
     - Assessment: models/assessment.md
   - Development:
     - Contributing: development/contributing.md

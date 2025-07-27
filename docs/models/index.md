@@ -39,12 +39,12 @@ models/nokia/
 
 | Model | Status | Tree Generation | Description |
 |-------|--------|----------------|-------------|
-| `openconfig-bgp.yang` | ❌ **INCOMPLETE** | ❌ **NO** | Main BGP configuration |
-| `openconfig-bgp-policy.yang` | ❌ **INCOMPLETE** | ❌ **NO** | BGP policy model |
-| `openconfig-bgp-types.yang` | ❌ **INCOMPLETE** | ❌ **NO** | BGP type definitions |
+| `openconfig-bgp.yang` | ✅ **FUNCTIONAL** | ✅ **WORKING** | Main BGP configuration |
+| `openconfig-bgp-policy.yang` | ⚠️ **PARTIAL** | ⚠️ **PARTIAL** | BGP policy model |
+| `openconfig-bgp-types.yang` | ✅ **FUNCTIONAL** | ✅ **WORKING** | BGP type definitions |
 
-!!! warning "Missing Dependencies"
-    OpenConfig models require additional submodules from the OpenConfig repository for complete validation.
+!!! success "BGP Main Model Working"
+    The main OpenConfig BGP model is now functional with proper dependencies and can generate tree structures.
 
 ### OpenConfig Model Structure
 
@@ -112,15 +112,19 @@ pyang -f tree --path nokia/types:nokia/router:ietf nokia/test/nokia-state-bgp-on
 ### OpenConfig Examples
 
 ```bash
-# Attempt OpenConfig BGP types validation
-pyang --strict --path openconfig/types:openconfig/extensions:ietf openconfig/bgp/openconfig-bgp-types.yang
+# Validate OpenConfig BGP main model
+pyang --strict -p openconfig -p ietf -p ../open-config/release/models openconfig/bgp/openconfig-bgp.yang
 
-# Using scripts for better error reporting
-./validate-openconfig-bgp.sh -e
+# Generate OpenConfig BGP tree (groupings)
+pyang -f tree --tree-print-groupings -p openconfig -p ietf -p ../open-config/release/models openconfig/bgp/openconfig-bgp.yang
+
+# Using scripts for analysis
+./validate-openconfig-bgp.sh -t
 ```
 
 ## Next Steps
 
 - **[Nokia Models Details](nokia.md)**: Detailed Nokia model information
 - **[OpenConfig Models Details](openconfig.md)**: OpenConfig model specifics  
+- **[BGP Model Comparison](bgp-models-comparison.md)**: Comparative analysis of Nokia vs OpenConfig BGP models
 - **[Assessment](assessment.md)**: Analysis of making more models work
