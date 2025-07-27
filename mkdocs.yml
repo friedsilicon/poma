@@ -66,6 +66,9 @@ nav:
     - OpenConfig Models: models/openconfig.md
     - BGP Model Comparison: models/bgp-models-comparison.md
     - Assessment: models/assessment.md
+  - Examples:
+    - NETCONF XML Samples: examples/netconf-xml-samples.md
+    - Model Incompatibilities: examples/model-incompatibilities.md
   - Development:
     - Contributing: development/contributing.md
     - Project Structure: development/project-structure.md

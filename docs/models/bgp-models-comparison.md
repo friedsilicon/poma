@@ -220,6 +220,44 @@ bgp/
 - **Multi-path Configuration**: Detailed ECMP and load balancing options
 - **BGP RIB Access**: Read-only access to BGP routing information base
 
+## Side-by-Side Structural Comparison
+
+### XML Namespace and Root Structure
+
+| Aspect | Nokia BGP State | OpenConfig BGP |
+|--------|-----------------|----------------|
+| **XML Namespace** | `urn:nokia.com:sros:ns:yang:sr:state` | `http://openconfig.net/yang/bgp` |
+| **Root Path** | `/state/router/bgp` | `/bgp` |
+| **Model Type** | State-only (read-only) | Config/State separated |
+| **NETCONF Ops** | `get` operations only | `get`, `edit-config`, `delete-config` |
+
+### Neighbor Organization
+
+| Aspect | Nokia Structure | OpenConfig Structure |
+|--------|----------------|---------------------|
+| **Peer Groups** | `bgp/group*[group-name]` | `bgp/peer-groups/peer-group*[peer-group-name]` |
+| **Neighbors** | `bgp/group/neighbor*[ip-address]` | `bgp/neighbors/neighbor*[neighbor-address]` |
+| **Group Reference** | Implicit (neighbors under group) | Explicit (`config/peer-group` reference) |
+| **Inheritance** | Direct group membership | Template-based inheritance |
+
+### Address Family Configuration
+
+| Family Type | Nokia Path | OpenConfig Path |
+|-------------|------------|-----------------|
+| **IPv4 Unicast** | `group/family/ipv4/unicast` | `afi-safis/afi-safi[afi-safi-name="IPV4_UNICAST"]` |
+| **L3VPN IPv4** | `group/family/vpn-ipv4/unicast` | `afi-safis/afi-safi[afi-safi-name="L3VPN_IPV4_UNICAST"]` |
+| **EVPN** | `group/family/evpn` | `afi-safis/afi-safi[afi-safi-name="L2VPN_EVPN"]` |
+| **IPv6 Labeled** | `group/family/label-ipv6` | `afi-safis/afi-safi[afi-safi-name="IPV6_LABELED_UNICAST"]` |
+
+### Configuration vs Operational Data
+
+| Data Type | Nokia Approach | OpenConfig Approach |
+|-----------|----------------|-------------------|
+| **Configuration Intent** | Not available (state-only) | `*/config/*` containers |
+| **Operational State** | All data under `/state` | `*/state/*` containers |
+| **Mixed Views** | N/A (state-only model) | Both config and state in same structure |
+| **Configuration Management** | External (not via YANG) | Native YANG-based configuration |
+
 ## Key Differences
 
 ### Architectural Approach
@@ -287,11 +325,33 @@ bgp/
 
 ## Conclusion
 
-Both models serve different purposes:
-- **Nokia**: Operational state monitoring with vendor-specific features
-- **OpenConfig**: Standardized configuration and state management
+Both models serve different purposes and have fundamental incompatibilities:
+
+- **Nokia**: Operational state monitoring with vendor-specific features and rich statistics
+- **OpenConfig**: Standardized configuration and state management with vendor-neutral approach
+
+### Key Incompatibilities
+
+1. **Structural Differences**: Different peer group organization and addressing family naming
+2. **Operational Model**: Nokia state-only vs OpenConfig config/state separation  
+3. **Feature Gaps**: Vendor-specific features not available in the other model
+4. **Data Granularity**: Different levels of operational statistics and monitoring data
+
+### Migration Complexity
+
+Direct model-to-model migration is challenging due to:
+- Incompatible XML structures requiring transformation logic
+- Feature parity gaps requiring alternative implementations
+- Different operational paradigms (state-only vs configuration management)
 
 The choice depends on use case: operational monitoring vs. configuration management, vendor-specific vs. vendor-neutral requirements.
+
+## Detailed Examples and Analysis
+
+For comprehensive NETCONF XML examples and detailed incompatibility analysis, see:
+
+- **[NETCONF XML Examples](../examples/netconf-xml-samples.md)** - Complete XML samples for both models
+- **[Model Incompatibilities](../examples/model-incompatibilities.md)** - Side-by-side comparisons and migration challenges
 
 ---
 

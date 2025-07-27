@@ -128,3 +128,8 @@ pyang -f tree --tree-print-groupings -p openconfig -p ietf -p ../open-config/rel
 - **[OpenConfig Models Details](openconfig.md)**: OpenConfig model specifics  
 - **[BGP Model Comparison](bgp-models-comparison.md)**: Comparative analysis of Nokia vs OpenConfig BGP models
 - **[Assessment](assessment.md)**: Analysis of making more models work
+
+## Practical Examples
+
+- **[NETCONF XML Samples](../examples/netconf-xml-samples.md)**: Complete NETCONF XML examples for both models
+- **[Model Incompatibilities](../examples/model-incompatibilities.md)**: Side-by-side comparisons and migration challenges
