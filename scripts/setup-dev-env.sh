@@ -54,7 +54,7 @@ else
     echo "⚠️  yanglint not found - install with:"
     echo "   macOS: brew install libyang"
     echo "   Ubuntu: sudo apt-get install libyang-tools"
-    echo "   See docs/reference/yang-tools.md for details"
+    echo "   See docs/referetestnce/yang-tools.md for details"
 fi
 
 if command -v yanggui &> /dev/null; then
@@ -67,7 +67,7 @@ fi
 # Check if models directory exists, if not create BGP models
 if [ ! -d "models" ]; then
     echo "🔗 Setting up BGP model symlinks..."
-    ./setup-bgp-models.sh
+    ./scripts/setup-bgp-models.sh
 else
     echo "📂 Models directory already exists - symlinks preserved"
 fi
@@ -76,7 +76,7 @@ echo ""
 echo "✅ Development environment setup complete!"
 echo ""
 echo "🧪 Testing YANG tools..."
-python test-yang-tools.py
+python scripts/test-yang-tools.py
 echo ""
 echo "� For fast submodule setup (recommended):"
 echo "   ./scripts/setup-submodules-fast.sh"
@@ -85,7 +85,7 @@ echo "�🚀 To activate the environment in the future:"
 echo "   source venv/bin/activate"
 echo ""
 echo "🔍 To verify tools anytime:"
-echo "   python test-yang-tools.py"
+echo "   python scripts/test-yang-tools.py"
 echo ""
 echo "📚 To deactivate when done:"
 echo "   deactivate"

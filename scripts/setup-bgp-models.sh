@@ -5,31 +5,51 @@ set -e
 echo "🔗 Setting up BGP YANG model symlinks..."
 echo ""
 
+# Define Nokia version - using latest available
+NOKIA_VERSION="latest_sros_25.7"
+NOKIA_PATH="nokia/${NOKIA_VERSION}"
+
+echo "📍 Using Nokia SROS version: ${NOKIA_VERSION}"
+echo ""
+
 # Create models directory structure
 echo "📁 Creating directory structure..."
-mkdir -p models/{nokia/{bgp,types,common},openconfig/{bgp,types,extensions,rib,common},ietf}
+mkdir -p models/{nokia/{bgp,types,common,config},openconfig/{bgp,types,extensions,rib,common},ietf}
 
 echo ""
-echo "📁 Setting up Nokia BGP models (SROS 19.10)..."
+echo "📁 Setting up Nokia BGP models (${NOKIA_VERSION})..."
 
-# Nokia BGP submodule (the main file you want)
-ln -sf ../../../nokia/latest_sros_19.10/nokia-state-router-bgp.yang \
+# Nokia BGP STATE models (for operational monitoring)
+echo "  🔹 Setting up Nokia BGP state models..."
+ln -sf ../../../${NOKIA_PATH}/nokia-submodule/nokia-state-router-bgp.yang \
     models/nokia/bgp/nokia-state-router-bgp.yang
 
+# Nokia BGP CONFIGURATION models (for configuration management)
+echo "  🔹 Setting up Nokia BGP configuration models..."
+ln -sf ../../../${NOKIA_PATH}/nokia-submodule/nokia-conf.yang \
+    models/nokia/config/nokia-conf.yang
+ln -sf ../../../${NOKIA_PATH}/nokia-submodule/nokia-conf-router-bgp.yang \
+    models/nokia/config/nokia-conf-router-bgp.yang
+
 # Nokia main state file (includes the BGP submodule)
-ln -sf ../../../nokia/latest_sros_19.10/nokia-state.yang \
+ln -sf ../../../${NOKIA_PATH}/nokia-submodule/nokia-state.yang \
     models/nokia/common/nokia-state.yang
 
-# Nokia type dependencies for BGP
-ln -sf ../../../nokia/latest_sros_19.10/nokia-sros-yang-extensions.yang \
+# Nokia router state file (needed by BGP submodule)
+ln -sf ../../../${NOKIA_PATH}/nokia-submodule/nokia-state-router.yang \
+    models/nokia/common/nokia-state-router.yang
+
+# Nokia type dependencies for BGP (using latest version)
+echo "  🔹 Setting up Nokia type dependencies..."
+ln -sf ../../../${NOKIA_PATH}/nokia-sros-yang-extensions.yang \
     models/nokia/types/nokia-sros-yang-extensions.yang
-ln -sf ../../../nokia/latest_sros_19.10/nokia-types-bgp.yang \
+ln -sf ../../../${NOKIA_PATH}/nokia-types-bgp.yang \
     models/nokia/types/nokia-types-bgp.yang
-ln -sf ../../../nokia/latest_sros_19.10/nokia-types-router.yang \
+ln -sf ../../../${NOKIA_PATH}/nokia-types-router.yang \
     models/nokia/types/nokia-types-router.yang
-ln -sf ../../../nokia/latest_sros_19.10/nokia-types-services.yang \
+ln -sf ../../../${NOKIA_PATH}/nokia-types-services.yang \
     models/nokia/types/nokia-types-services.yang
-ln -sf ../../../nokia/latest_sros_19.10/nokia-types-sros.yang \
+ln -sf ../../../${NOKIA_PATH}/nokia-types-sros.yang \
     models/nokia/types/nokia-types-sros.yang
 
 echo ""
@@ -40,7 +60,7 @@ ln -sf ../../../open-config/release/models/bgp/openconfig-bgp.yang \
     models/openconfig/bgp/openconfig-bgp.yang
 
 # OpenConfig BGP dependencies
-ln -sf ../../../open-config/release/models/extensions/openconfig-extensions.yang \
+ln -sf ../../../open-config/release/models/openconfig-extensions.yang \
     models/openconfig/extensions/openconfig-extensions.yang
 ln -sf ../../../open-config/release/models/rib/openconfig-rib-bgp.yang \
     models/openconfig/rib/openconfig-rib-bgp.yang
