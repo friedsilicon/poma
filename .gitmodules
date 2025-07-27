@@ -1,6 +1,10 @@
 [submodule "open-config"]
 	path = open-config
 	url = https://github.com/openconfig/public.git
+	shallow = true
+	branch = master
 [submodule "nokia"]
 	path = nokia
 	url = https://github.com/nokia/7x50_YangModels.git
+	shallow = true
+	branch = master

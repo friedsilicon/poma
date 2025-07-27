@@ -26,9 +26,10 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Checkout submodules with shallow clone
+      - name: Fast submodule setup for CI
         run: |
-          git submodule update --init --recursive --depth 1
+          chmod +x scripts/setup-submodules-fast.sh
+          ./scripts/setup-submodules-fast.sh ci
 
       - name: Setup Python
         uses: actions/setup-python@v5

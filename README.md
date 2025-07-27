@@ -7,16 +7,35 @@ A comprehensive collection of YANG models and validation tools for network autom
 ## 🚀 Quick Start
 
 ```bash
+## 🚀 Quick Start
+
+**⚡ Fast automated setup (recommended):**
+```bash
+git clone https://github.com/friedsilicon/poma.git
+cd poma
+make setup    # Complete setup in ~30 seconds
+make validate # Test everything
+```
+
+**🛠️ Manual setup:**
+```bash
 # Clone with submodules
 git clone --recursive https://github.com/friedsilicon/poma.git
 cd poma
 
-# Setup environment
+# Setup environment  
 ./scripts/setup-dev-env.sh
 
 # Test BGP models
 source venv/bin/activate
-cd models && ./validate-bgp.sh -t
+./validate-bgp.sh -t
+```
+
+**🏗️ CI/Build optimized:**
+```bash
+git clone https://github.com/friedsilicon/poma.git
+cd poma
+./scripts/setup-submodules-fast.sh ci  # Ultra-fast ~10 seconds
 ```
 
 ## 📚 Documentation

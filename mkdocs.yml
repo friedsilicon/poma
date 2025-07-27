@@ -73,6 +73,7 @@ nav:
     - Contributing: development/contributing.md
     - Project Structure: development/project-structure.md
     - Adding Models: development/adding-models.md
+    - Performance Optimization: development/performance-optimization.md
   - Reference:
     - YANG Tools: reference/yang-tools.md
     - Command Reference: reference/command-reference.md
