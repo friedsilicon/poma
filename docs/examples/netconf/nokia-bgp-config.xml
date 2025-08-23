@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sample NETCONF request for BGP configuration using Nokia SROS models -->
+<rpc message-id="102" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <edit-config>
+    <target>
+      <candidate/>
+    </target>
+    <config>
+      <!-- Nokia SROS BGP Configuration -->
+      <configure xmlns="urn:nokia.com:sros:ns:yang:sr:conf">
+        <router>
+          <router-name>Base</router-name>
+          <autonomous-system>65001</autonomous-system>
+          <router-id>192.168.1.1</router-id>
+          <bgp>
+            <admin-state>enable</admin-state>
+            <router-id>192.168.1.1</router-id>
+            <as-number>65001</as-number>
+            
+            <!-- Address Family Configuration -->
+            <family>
+              <ipv4>true</ipv4>
+              <ipv6>true</ipv6>
+            </family>
+            
+            <!-- BGP Groups -->
+            <group>
+              <group-name>external-peers</group-name>
+              <admin-state>enable</admin-state>
+              <description>External BGP peers template</description>
+              <type>external</type>
+              <peer-as>65002</peer-as>
+              <family>
+                <ipv4>true</ipv4>
+              </family>
+              <timers>
+                <keepalive>60</keepalive>
+                <hold-time>180</hold-time>
+              </timers>
+            </group>
+            
+            <group>
+              <group-name>internal-peers</group-name>
+              <admin-state>enable</admin-state>
+              <description>Internal BGP peers template</description>
+              <type>internal</type>
+              <family>
+                <ipv4>true</ipv4>
+              </family>
+              <cluster>
+                <cluster-id>192.168.1.1</cluster-id>
+              </cluster>
+            </group>
+            
+            <!-- BGP Neighbors -->
+            <neighbor>
+              <ip-address>192.168.1.2</ip-address>
+              <admin-state>enable</admin-state>
+              <description>eBGP peer to AS 65002</description>
+              <group>external-peers</group>
+              <peer-as>65002</peer-as>
+              <family>
+                <ipv4>true</ipv4>
+              </family>
+            </neighbor>
+            
+            <neighbor>
+              <ip-address>10.0.0.2</ip-address>
+              <admin-state>enable</admin-state>
+              <description>iBGP route reflector client</description>
+              <group>internal-peers</group>
+              <family>
+                <ipv4>true</ipv4>
+              </family>
+              <cluster>
+                <cluster-id>192.168.1.1</cluster-id>
+              </cluster>
+            </neighbor>
+            
+            <!-- Route Reflector Configuration -->
+            <route-reflector>
+              <admin-state>enable</admin-state>
+              <cluster-id>192.168.1.1</cluster-id>
+            </route-reflector>
+            
+            <!-- BGP Import/Export Policies -->
+            <import>
+              <policy>bgp-import-policy</policy>
+            </import>
+            <export>
+              <policy>bgp-export-policy</policy>
+            </export>
+          </bgp>
+          
+          <!-- Route Policies -->
+          <policy-options>
+            <policy-statement>
+              <name>bgp-import-policy</name>
+              <entry>
+                <entry-id>10</entry-id>
+                <from>
+                  <protocol>
+                    <name>bgp</name>
+                  </protocol>
+                </from>
+                <action>
+                  <action-type>accept</action-type>
+                  <local-preference>100</local-preference>
+                </action>
+              </entry>
+            </policy-statement>
+            
+            <policy-statement>
+              <name>bgp-export-policy</name>
+              <entry>
+                <entry-id>10</entry-id>
+                <from>
+                  <protocol>
+                    <name>direct</name>
+                  </protocol>
+                </from>
+                <action>
+                  <action-type>accept</action-type>
+                  <med>50</med>
+                </action>
+              </entry>
+              <entry>
+                <entry-id>20</entry-id>
+                <from>
+                  <protocol>
+                    <name>static</name>
+                  </protocol>
+                </from>
+                <action>
+                  <action-type>accept</action-type>
+                  <med>100</med>
+                </action>
+              </entry>
+            </policy-statement>
+          </policy-options>
+        </router>
+      </configure>
+    </config>
+  </edit-config>
+</rpc>

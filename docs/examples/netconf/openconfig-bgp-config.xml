@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sample NETCONF request for BGP configuration using OpenConfig models -->
+<rpc message-id="101" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <edit-config>
+    <target>
+      <candidate/>
+    </target>
+    <config>
+      <!-- OpenConfig BGP Configuration -->
+      <network-instances xmlns="http://openconfig.net/yang/network-instance">
+        <network-instance>
+          <name>default</name>
+          <protocols>
+            <protocol>
+              <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:BGP</identifier>
+              <name>bgp</name>
+              <config>
+                <identifier xmlns:oc-pol-types="http://openconfig.net/yang/policy-types">oc-pol-types:BGP</identifier>
+                <name>bgp</name>
+              </config>
+              <bgp xmlns="http://openconfig.net/yang/bgp">
+                <global>
+                  <config>
+                    <as>65001</as>
+                    <router-id>192.168.1.1</router-id>
+                  </config>
+                  <afi-safis>
+                    <afi-safi>
+                      <afi-safi-name xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">oc-bgp-types:IPV4_UNICAST</afi-safi-name>
+                      <config>
+                        <afi-safi-name xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">oc-bgp-types:IPV4_UNICAST</afi-safi-name>
+                        <enabled>true</enabled>
+                      </config>
+                    </afi-safi>
+                    <afi-safi>
+                      <afi-safi-name xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">oc-bgp-types:IPV6_UNICAST</afi-safi-name>
+                      <config>
+                        <afi-safi-name xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">oc-bgp-types:IPV6_UNICAST</afi-safi-name>
+                        <enabled>true</enabled>
+                      </config>
+                    </afi-safi>
+                  </afi-safis>
+                </global>
+                <neighbors>
+                  <neighbor>
+                    <neighbor-address>192.168.1.2</neighbor-address>
+                    <config>
+                      <neighbor-address>192.168.1.2</neighbor-address>
+                      <peer-as>65002</peer-as>
+                      <description>eBGP peer to AS 65002</description>
+                      <enabled>true</enabled>
+                    </config>
+                    <afi-safis>
+                      <afi-safi>
+                        <afi-safi-name xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">oc-bgp-types:IPV4_UNICAST</afi-safi-name>
+                        <config>
+                          <afi-safi-name xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">oc-bgp-types:IPV4_UNICAST</afi-safi-name>
+                          <enabled>true</enabled>
+                        </config>
+                      </afi-safi>
+                    </afi-safis>
+                  </neighbor>
+                  <neighbor>
+                    <neighbor-address>10.0.0.2</neighbor-address>
+                    <config>
+                      <neighbor-address>10.0.0.2</neighbor-address>
+                      <peer-as>65001</peer-as>
+                      <description>iBGP peer within AS 65001</description>
+                      <enabled>true</enabled>
+                    </config>
+                    <afi-safis>
+                      <afi-safi>
+                        <afi-safi-name xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">oc-bgp-types:IPV4_UNICAST</afi-safi-name>
+                        <config>
+                          <afi-safi-name xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">oc-bgp-types:IPV4_UNICAST</afi-safi-name>
+                          <enabled>true</enabled>
+                        </config>
+                        <route-reflector>
+                          <config>
+                            <route-reflector-client>true</route-reflector-client>
+                          </config>
+                        </route-reflector>
+                      </afi-safi>
+                    </afi-safis>
+                  </neighbor>
+                </neighbors>
+                <peer-groups>
+                  <peer-group>
+                    <peer-group-name>external-peers</peer-group-name>
+                    <config>
+                      <peer-group-name>external-peers</peer-group-name>
+                      <description>Template for external BGP peers</description>
+                    </config>
+                    <timers>
+                      <config>
+                        <hold-time>180</hold-time>
+                        <keepalive-interval>60</keepalive-interval>
+                      </config>
+                    </timers>
+                    <afi-safis>
+                      <afi-safi>
+                        <afi-safi-name xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">oc-bgp-types:IPV4_UNICAST</afi-safi-name>
+                        <config>
+                          <afi-safi-name xmlns:oc-bgp-types="http://openconfig.net/yang/bgp-types">oc-bgp-types:IPV4_UNICAST</afi-safi-name>
+                          <enabled>true</enabled>
+                        </config>
+                      </afi-safi>
+                    </afi-safis>
+                  </peer-group>
+                </peer-groups>
+              </bgp>
+            </protocol>
+          </protocols>
+        </network-instance>
+      </network-instances>
+    </config>
+  </edit-config>
+</rpc>

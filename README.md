@@ -108,6 +108,19 @@ mkdocs serve
 # Visit: http://localhost:8000
 ```
 
+## 📋 NETCONF Examples
+
+Ready-to-use NETCONF configuration samples:
+- **[OpenConfig BGP](docs/examples/netconf/openconfig-bgp-config.xml)** - Standards-based BGP configuration
+- **[Nokia SROS BGP](docs/examples/netconf/nokia-bgp-config.xml)** - Nokia-specific BGP setup
+- **[Usage Guide](docs/examples/netconf/README.md)** - How to customize and deploy
+
+Features demonstrated:
+- Global BGP configuration and neighbor setup
+- Peer groups and route reflection
+- Address family configuration (IPv4/IPv6)
+- Policy integration (Nokia) and AFI-SAFI management (OpenConfig)
+
 ## 🤝 Contributing
 
 1. Add new YANG sources as git submodules

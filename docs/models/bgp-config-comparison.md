@@ -509,3 +509,11 @@ bgp_intent:
 Both models serve different configuration management philosophies:
 - **Nokia models**: Deep, vendor-specific configuration control
 - **OpenConfig models**: Simplified, standardized configuration intent
+
+## Sample NETCONF Requests
+
+For practical examples of BGP configuration using both models, see:
+- [OpenConfig BGP NETCONF Sample](../examples/netconf/openconfig-bgp-config.xml)
+- [Nokia SROS BGP NETCONF Sample](../examples/netconf/nokia-bgp-config.xml)
+
+These samples demonstrate real-world NETCONF requests for configuring BGP neighbors, peer groups, route reflection, and policies using each model's approach.

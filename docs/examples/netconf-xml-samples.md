@@ -5,9 +5,25 @@ This document provides comprehensive NETCONF XML examples for both Nokia and Ope
 ## Overview
 
 The examples show:
-- **Nokia BGP State Model**: Read-only operational state queries
-- **OpenConfig BGP Model**: Configuration management and state retrieval
+- **Nokia BGP Configuration**: Complete BGP setup using Nokia SROS models
+- **OpenConfig BGP Configuration**: Standards-based BGP configuration
+- **Nokia BGP State Queries**: Read-only operational state queries
 - **NETCONF Operations**: `get`, `edit-config` with realistic BGP scenarios
+
+## Complete Configuration Examples
+
+For complete, ready-to-use NETCONF configuration samples, see:
+
+- **[OpenConfig BGP Configuration](netconf/openconfig-bgp-config.xml)** - Full BGP setup using OpenConfig models
+- **[Nokia SROS BGP Configuration](netconf/nokia-bgp-config.xml)** - Complete Nokia BGP configuration
+- **[NETCONF Samples README](netconf/README.md)** - Usage instructions and customization guide
+
+These samples include:
+- Global BGP configuration (AS numbers, router-id)
+- Peer group templates and neighbor configuration
+- Address family enablement (IPv4/IPv6)
+- Route reflector setup
+- Policy configuration (Nokia) and AFI-SAFI settings (OpenConfig)
 
 ## Nokia BGP State Model Examples
 
